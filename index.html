@@ -494,7 +494,7 @@
            actual name attribute (looks like b_xxxxx_xxxxx). Both values
            are unique to your account/audience. -->
       <form class="signup" id="notify"
-            action="ACTION_URL_HERE"
+            action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
             method="post" target="mc-hidden-iframe"
             onsubmit="handleMailchimpSubmit()">
         <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
@@ -502,7 +502,7 @@
              exactly as-is except for the name attribute. Mailchimp uses
              this to catch spam bots, which tend to fill in every field. -->
         <div style="position: absolute; left: -5000px;" aria-hidden="true">
-          <input type="text" name="HONEYPOT_FIELD_NAME_HERE" tabindex="-1" value="">
+          <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
         </div>
         <button type="submit" id="notifyBtn">Notify Me</button>
       </form>
@@ -611,12 +611,6 @@
     const form = document.getElementById('notify');
     const btn = document.getElementById('notifyBtn');
     const note = document.getElementById('notifyNote');
-
-    if (form.action.includes('ACTION_URL_HERE')) {
-      note.textContent = "Signup isn't connected yet — see setup notes.";
-      note.style.color = '#e8483a';
-      return false;
-    }
 
     btn.textContent = 'Sending...';
     btn.disabled = true;
