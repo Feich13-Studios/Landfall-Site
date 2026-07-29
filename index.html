@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LANDFALL — Coming to Android</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #050b14;
+    --navy-panel: #0a1420;
+    --navy-panel-2: #0d1b28;
+    --teal: #2dd4c0;
+    --teal-dim: rgba(45, 212, 192, 0.14);
+    --danger: #e8483a;
+    --ice: #c8e6eb;
+    --text-body: #a9c2ca;
+    --text-dim: #5a7480;
+    --border: rgba(45, 212, 192, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deep);
+    color: var(--text-body);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(45,212,192,0.06), transparent 55%),
+      radial-gradient(ellipse at 90% 30%, rgba(232,72,58,0.05), transparent 45%);
+  }
+
+  a { color: inherit; }
+
+  /* ── TOP BAR ─────────────────────────────────────────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 5vw;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+  }
+  .brand .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+  }
+  .topbar nav a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    margin-left: 28px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .topbar nav a:hover { color: var(--teal); }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    padding: 7vh 5vw 6vh;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--danger);
+    text-transform: uppercase;
+    border: 1px solid rgba(232,72,58,0.35);
+    background: rgba(232,72,58,0.08);
+    padding: 6px 12px;
+    border-radius: 3px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--danger);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+  }
+
+  h1.title {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(52px, 8vw, 94px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    color: #f2fbfa;
+    text-shadow: 0 0 40px rgba(45,212,192,0.25);
+  }
+
+  .tagline {
+    margin-top: 22px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-body);
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+  .tagline strong { color: var(--teal); font-weight: 700; }
+
+  .hero-meta {
+    margin-top: 32px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-item .k {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .meta-item .v {
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    color: var(--ice);
+  }
+
+  /* Signup */
+  .signup {
+    margin-top: 40px;
+    display: flex;
+    gap: 0;
+    max-width: 440px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--navy-panel);
+  }
+  .signup input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 16px 18px;
+    color: var(--ice);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+  }
+  .signup input::placeholder { color: var(--text-dim); }
+  .signup button {
+    background: var(--teal);
+    border: none;
+    color: #04211d;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 0 22px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .signup button:hover { background: #45e8d5; }
+  .signup-note { margin-top: 10px; font-size: 12px; color: var(--text-dim); }
+
+  .clean-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .clean-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: var(--ice);
+    background: rgba(45, 212, 192, 0.10);
+    border: 1px solid rgba(45, 212, 192, 0.4);
+    border-radius: 30px;
+    padding: 8px 16px;
+  }
+  .clean-check {
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  /* ── STORM CARD (hero visual) ────────────────────────── */
+  .storm-visual {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    /* padding-top: 100% trick (below) establishes real height through an
+       actual block-level pseudo-element in normal document flow — more
+       reliably predictable across browsers/Grid contexts than the newer
+       aspect-ratio property turned out to be. */
+  }
+  .storm-visual::before {
+    content: '';
+    display: block;
+    padding-top: 100%; /* percentage padding is based on the element's OWN WIDTH, not its parent — this is what makes a perfect square regardless of actual width */
+  }
+  /* Per feedback ("can't this actually be clouds"): no amount of CSS
+     gradient layering ever reads as a real photograph — it's always
+     either a clean geometric wheel or, once blurred enough to look
+     organic, an indistinct flat wash. Simplest and most honest fix: use
+     an actual satellite photo instead of trying to fake one. This is
+     NASA's own public-domain photo of Hurricane Ian's eye, captured by
+     Landsat 8 (Sept 2022) — a US government work, hosted directly on
+     nasa.gov, credited to NASA Earth Observatory / Joshua Stevens using
+     USGS Landsat data. */
+  .spiral-clip {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #0d1b28; /* fallback fill if the image is ever slow to load */
+  }
+  .spiral-clip img {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 130%; height: 130%; /* oversized relative to the circular frame so rotation never reveals a corner of the (non-circular) source photo */
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    animation: spin 40s linear infinite; /* slower than the old gradient version — real photo detail reads better at a gentler rotation speed */
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .storm-card {
+    position: absolute;
+    bottom: -6%;
+    left: -8%;
+    width: 78%;
+    background: rgba(10, 20, 32, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .storm-card .label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .storm-card .name {
+    font-family: 'Russo One', sans-serif;
+    font-size: 19px;
+    color: #fff;
+    margin: 2px 0 10px;
+  }
+  .stat-row { display: flex; gap: 22px; }
+  .stat .label { margin-bottom: 3px; }
+  .stat .val {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    color: var(--teal);
+  }
+  .stat .val.danger { color: var(--danger); }
+
+  /* ── FEATURES ─────────────────────────────────────────── */
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 8vh 5vw;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+  .section-head h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 28px;
+    color: #f2fbfa;
+  }
+  .section-head span {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .action-card {
+    background: var(--navy-panel);
+    padding: 26px 24px;
+    position: relative;
+  }
+  .action-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--teal);
+  }
+  .action-card .lv {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .action-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ice);
+    margin-bottom: 8px;
+  }
+  .action-card p {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ── TICKER ───────────────────────────────────────────── */
+  .ticker-wrap {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #0c1520;
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 42s linear infinite;
+    font-size: 14.5px;
+    color: var(--text-body);
+  }
+  .ticker-track span.sep { color: var(--teal); margin: 0 20px; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6vh 5vw 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .fbrand {
+    font-family: 'Russo One', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+  footer .fsocial a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-left: 22px;
+    transition: color 0.2s;
+  }
+  footer .fsocial a:hover { color: var(--teal); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 4vh; }
+    .storm-visual { max-width: 320px; margin-top: 60px; margin-bottom: 90px; }
+    .signup { flex-direction: column; }
+    .signup button { padding: 14px; }
+    /* FIX: the storm card is absolutely positioned to overlap the
+       bottom-left of the spiral graphic on desktop, which looks fine with
+       room to spare — but at narrow widths that same offset pushes it up
+       into the signup form above it instead. Switch to normal document
+       flow here so it sits cleanly below the spiral with its own margin,
+       rather than overlapping anything. */
+    .storm-card {
+      position: static;
+      width: 100%;
+      margin-top: 24px;
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spiral-clip img, .ticker-track, .eyebrow .pulse { animation: none !important; }
+  }
+
+  /* ── COOKIE CONSENT BANNER ────────────────────────────────────────── */
+  .consent-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 999;
+    background: #0a1420;
+    border-top: 1px solid var(--border);
+    padding: 18px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
+  }
+  .consent-banner p {
+    font-size: 14.5px;
+    color: var(--text-body);
+    max-width: 62ch;
+    margin: 0;
+  }
+  .consent-banner a { color: var(--teal); text-decoration: underline; }
+  .consent-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .consent-actions button {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
+  .consent-accept {
+    background: var(--teal);
+    color: #04211d;
+    border: none !important;
+  }
+  .consent-accept:hover { background: #45e8d5; }
+  .consent-decline {
+    background: transparent;
+    color: var(--text-dim);
+  }
+  .consent-decline:hover { color: var(--ice); border-color: var(--teal); }
+
+  @media (max-width: 640px) {
+    .consent-banner { flex-direction: column; align-items: stretch; text-align: center; }
+    .consent-actions { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="consent-banner" id="consentBanner" style="display: none;">
+    <p>This site uses Google Analytics and Mailchimp tracking to understand visitor traffic and support our email signup. No personal data is collected — see our <a href="privacy.html">Privacy Policy</a> for details.</p>
+    <div class="consent-actions">
+      <button class="consent-decline" onclick="handleConsent(false)">Decline</button>
+      <button class="consent-accept" onclick="handleConsent(true)">Accept</button>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span> FEICH13 STUDIOS</div>
+    <nav>
+      <a href="#features">Gameplay</a>
+      <a href="#notify">Notify Me</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> Currently Forming</div>
+      <h1 class="title">LANDFALL</h1>
+      <p class="tagline">Track it. Steer it. Name it. <strong>LANDFALL</strong> is a hurricane simulator for Android — draw the track, manage the intensity, and see how much damage a single storm can really do.</p>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="k">Platform</div>
+          <div class="v">Android</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Launch Window</div>
+          <div class="v">Atlantic Season</div>
+        </div>
+        <div class="meta-item">
+          <div class="k">Price</div>
+          <div class="v">One-time purchase</div>
+        </div>
+      </div>
+
+      <div class="clean-badges">
+        <div class="clean-badge">
+          <span class="clean-check">✓</span> No Ads
+        </div>
+        <div class="clean-badge">
+          <span class="clean-check">✓</span> No Micro-transactions
+        </div>
+      </div>
+
+      <!-- MAILCHIMP SETUP: replace ACTION_URL_HERE below with your form's
+           real action URL from Audience > Signup forms > Embedded forms,
+           and replace HONEYPOT_FIELD_NAME_HERE with your honeypot input's
+           actual name attribute (looks like b_xxxxx_xxxxx). Both values
+           are unique to your account/audience. -->
+      <form class="signup" id="notify"
+            action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
+            method="post" target="mc-hidden-iframe"
+            onsubmit="handleMailchimpSubmit()">
+        <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
+        <!-- Honeypot — real visitors never see or fill this in; leave it
+             exactly as-is except for the name attribute. Mailchimp uses
+             this to catch spam bots, which tend to fill in every field. -->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
+        </div>
+        <button type="submit" id="notifyBtn">Notify Me</button>
+      </form>
+      <iframe name="mc-hidden-iframe" style="display:none;" title="mailchimp-submit"></iframe>
+      <div class="signup-note" id="notifyNote">No spam. One email, the day it launches.</div>
+    </div>
+
+    <div class="storm-visual">
+      <div class="spiral-clip">
+        <img src="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg"
+             alt="Satellite image of a hurricane's eye, courtesy of NASA Earth Observatory">
+      </div>
+      <div class="storm-card">
+        <div class="label">Storm</div>
+        <div class="name">Hurricane Landfall</div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="label" style="font-size:10px;color:#5a7480;">Category</div>
+            <div class="val danger">5</div>
+          </div>
+          <div class="stat">
+            <div class="label" style="font-size:10px;color:#5a7480;">Wind</div>
+            <div class="val">184 mph</div>
+          </div>
+          <div class="stat">
+            <div class="label" style="font-size:10px;color:#5a7480;">ETA</div>
+            <div class="val">Soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="features">
+    <div class="section-head">
+      <h2>Storm Actions</h2>
+      <span>What you'll actually be doing</span>
+    </div>
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="lv">Track</div>
+        <h3>Draw the path</h3>
+        <p>Every storm goes where you send it. One finger, one line, one landfall.</p>
+      </div>
+      <div class="action-card">
+        <div class="lv">Intensify</div>
+        <h3>Manage the conditions</h3>
+        <p>Suppress shear, absorb heat, dive deeper — real atmospheric levers, real consequences.</p>
+      </div>
+      <div class="action-card">
+        <div class="lv">React</div>
+        <h3>Survive the Black Swans</h3>
+        <p>Unpredictable events reshape every season. Some help. Most don't.</p>
+      </div>
+      <div class="action-card">
+        <div class="lv">Score</div>
+        <h3>Hit your targets</h3>
+        <p>Cities across five ocean basins, each with their own value on the line.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <footer>
+    <div class="fbrand">FEICH13 STUDIOS © 2026<br><span style="font-size: 11px; opacity: 0.7;">Hurricane Ian eye photo courtesy of NASA Earth Observatory</span></div>
+    <div class="fsocial">
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">Google Play</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+<script>
+  const lines = [
+    "Hurricane Hunter makes TikTok in eyewall",
+    "NHC briefing interrupted after reporter asks if the storm has a Spotify playlist",
+    "Storm chasers descend despite NHC explicitly asking them not to",
+    "King of Spain fails citizenship test",
+    "Scottish man runs 240 miles in 6 hours, celebrates with black pudding",
+    "Local hardware store sells out of plywood, enterprising teens sell cardboard at markup",
+    "Dev log: five ocean basins, 630+ cities, still adding more",
+  ];
+  const track = document.getElementById('tickerTrack');
+  const content = lines.join('<span class="sep">•</span>');
+  track.innerHTML = content + '<span class="sep">•</span>' + content;
+
+  // ── EMAIL SIGNUP — MAILCHIMP ──────────────────────────────────────────
+  // The form itself submits to Mailchimp's list-manage.com endpoint via a
+  // hidden iframe (see the form's target="mc-hidden-iframe" above) — this
+  // keeps the visitor on this page instead of navigating to Mailchimp's
+  // own hosted confirmation page.
+  //
+  // HONEST LIMITATION: because that iframe loads a page on a different
+  // domain (list-manage.com), the browser's same-origin policy blocks
+  // this script from reading anything about what happened inside it —
+  // whether the submission actually succeeded, whether the email was
+  // malformed, already subscribed, etc. So the message below shows
+  // OPTIMISTICALLY after a short delay, assuming success — it is not a
+  // real confirmation. If real error handling matters more than staying
+  // on this page, drop the iframe/target entirely and let the form
+  // navigate normally to Mailchimp's own hosted page instead, which does
+  // show accurate success/error states.
+  function handleMailchimpSubmit() {
+    const form = document.getElementById('notify');
+    const btn = document.getElementById('notifyBtn');
+    const note = document.getElementById('notifyNote');
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      document.getElementById('notify').style.display = 'none';
+      note.textContent = "You're on the list — we'll email you the day it launches.";
+      note.style.color = '#2dd4c0';
+    }, 900);
+
+    return true; // let the actual submission proceed into the hidden iframe
+  }
+
+  // ── COOKIE CONSENT GATING ──────────────────────────────────────────
+  // GA4 does NOT load at all until this actually runs it — no script tag
+  // sits in <head> firing regardless of what the banner shows, which was
+  // the whole point of doing this properly rather than cosmetically.
+  const GA_MEASUREMENT_ID = 'G-YW4GQY24EQ';
+  const CONSENT_KEY = 'landfall_cookie_consent'; // stored value: 'accepted' or 'declined'
+
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+
+  // Mailchimp's Connected Site tracking script — tracks visitor behavior
+  // on this site to support Mailchimp's own automation features. Also a
+  // third-party tracking script that sets cookies, so it's gated behind
+  // the same consent choice as GA4 rather than loading unconditionally.
+  function loadMailchimpTracking() {
+    (function(c,h,i,m,p){
+      m=c.createElement(h), p=c.getElementsByTagName(h)[0];
+      m.async=1; m.src=i;
+      p.parentNode.insertBefore(m,p);
+    })(document,"script","https://chimpstatic.com/mcjs-connected/js/users/321c56d5183788fe9b9946ff5/0672e0c9b27ea75571ab60e39.js");
+  }
+
+  function loadAllTracking() {
+    loadGoogleAnalytics();
+    loadMailchimpTracking();
+  }
+
+  function handleConsent(accepted) {
+    localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
+    document.getElementById('consentBanner').style.display = 'none';
+    if (accepted) loadAllTracking();
+  }
+
+  (function initConsent() {
+    const stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === 'accepted') {
+      loadAllTracking(); // already consented on a previous visit — load immediately, no banner
+    } else if (stored === 'declined') {
+      // Previously declined — respect that, don't load anything, don't nag again
+    } else {
+      // No choice made yet — show the banner, wait for a click
+      document.getElementById('consentBanner').style.display = 'flex';
+    }
+  })();
+</script>
+
+</body>
+</html>
