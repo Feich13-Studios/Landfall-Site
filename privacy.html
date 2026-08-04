@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — LANDFALL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #050b14;
+    --navy-panel: #0a1420;
+    --teal: #2dd4c0;
+    --ice: #c8e6eb;
+    --text-body: #a9c2ca;
+    --text-dim: #5a7480;
+    --border: rgba(45, 212, 192, 0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--navy-deep);
+    color: var(--text-body);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 5vw;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+  }
+  .topbar .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+  }
+  .topbar a { color: var(--text-dim); text-decoration: none; margin-left: auto; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .topbar a:hover { color: var(--teal); }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 7vh 5vw 10vh;
+  }
+  h1.title {
+    font-family: 'Russo One', sans-serif;
+    font-size: clamp(32px, 5vw, 46px);
+    color: #f2fbfa;
+    margin-bottom: 8px;
+  }
+  .effective {
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ice);
+    margin: 40px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    width: 3px;
+    height: 20px;
+    background: var(--teal);
+    display: inline-block;
+  }
+  p { margin-bottom: 14px; }
+  ul { margin: 0 0 14px 22px; }
+  li { margin-bottom: 8px; }
+  strong { color: var(--ice); }
+  .placeholder {
+    color: var(--teal);
+    background: rgba(45,212,192,0.1);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 5vw 6vh;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* ── COOKIE CONSENT BANNER (same styling as index.html) ─────────── */
+  .consent-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 999;
+    background: #0a1420;
+    border-top: 1px solid var(--border);
+    padding: 18px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
+  }
+  .consent-banner p { font-size: 14.5px; color: var(--text-body); max-width: 62ch; margin: 0; }
+  .consent-banner a { color: var(--teal); text-decoration: underline; }
+  .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .consent-actions button {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 11px 20px; border-radius: 4px;
+    cursor: pointer; border: 1px solid var(--border);
+  }
+  .consent-accept { background: var(--teal); color: #04211d; border: none !important; }
+  .consent-accept:hover { background: #45e8d5; }
+  .consent-decline { background: transparent; color: var(--text-dim); }
+  .consent-decline:hover { color: var(--ice); border-color: var(--teal); }
+  @media (max-width: 640px) {
+    .consent-banner { flex-direction: column; align-items: stretch; text-align: center; }
+    .consent-actions { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="consent-banner" id="consentBanner" style="display: none;">
+    <p>This site uses Google Analytics and Mailchimp tracking to understand visitor traffic and support our email signup. No personal data is collected — see this Privacy Policy for details.</p>
+    <div class="consent-actions">
+      <button class="consent-decline" onclick="handleConsent(false)">Decline</button>
+      <button class="consent-accept" onclick="handleConsent(true)">Accept</button>
+    </div>
+  </div>
+
+
+  <div class="topbar">
+    <span class="dot"></span> FEICH13 STUDIOS
+    <a href="index.html">← Back to Landfall</a>
+  </div>
+
+  <main>
+<h1 class="title">Privacy Policy</h1>
+<div class="effective">Effective date: 04/08/2026</div>
+<p>Feich13 Studios ("we," "us") develops LANDFALL (the "App"), a single-player hurricane simulation game for Android. This policy explains what information the App does — and does not — collect, in plain terms.</p>
+<h2>What we collect</h2><p>LANDFALL runs primarily on your device, and you do not need to create an account, sign in, or provide any personal information to play the game.</p><p>The App stores your gameplay data locally on your device only, including:</p><ul><li>Season and storm progress</li><li>Achievement unlocks</li><li>Settings preferences (music, sound effects, haptics)</li></ul><p>This local data stays on your device. It is never transmitted to us, to Feich13 Studios' servers (we don't operate any), or to any third party.</p><h2>Leaderboards (optional)</h2><p>LANDFALL includes an optional leaderboard feature powered by Google Play Games Services. If you choose to sign in and submit a score, Google receives your Gamertag/avatar and submitted score. We never receive this data.</p><h2>What we don't collect</h2><p>We do not collect your name, email, location, contacts, photos, camera, microphone, or other personal information. LANDFALL has no account system of its own.</p><h2>Leaderboard data</h2><ul><li>Processed by Google Play Games Services.</li><li>Used only for leaderboards.</li><li>Can be deleted via your Google Account/Play Games settings.</li><li>Encrypted in transit by Google.</li></ul><h2>Analytics, advertising, and third-party services</h2><p>LANDFALL has no analytics, advertising, or tracking SDKs. The only exception is the optional Google Play Games leaderboard. If this changes, this policy will be updated before release.</p><h2>This website's own analytics</h2><p>This website uses Google Analytics and Mailchimp Connected Site tracking behind the cookie banner. Neither loads unless you click Accept. This is separate from the App, which has no analytics beyond the optional leaderboard.</p><h2>Permissions</h2><p>The App may request vibration/haptic feedback permission solely for gameplay feedback.</p><h2>Children's privacy</h2><p>We do not knowingly collect personal information. The optional leaderboard uses Google Play Games if you choose to sign in.</p><h2>Data sharing and sale</h2><p>We do not sell, rent, or share personal data. Leaderboard data goes directly to Google.</p><h2>Data retention and deletion</h2><p>Gameplay data stays on your device. Uninstalling the App removes it. Leaderboard data is managed by Google.</p><h2>Changes to this policy</h2><p>If our data practices change, we'll update this page and revise the effective date.</p><h2>Contact</h2><p>Questions about this policy can be sent to: feich13studios@gmail.com</p></main>
+
+  <footer>
+    LANDFALL is developed by Feich13 Studios. This policy applies to the LANDFALL Android application only.
+  </footer>
+
+<script>
+  // Same consent gating as index.html — shares the same localStorage key,
+  // so a choice made on either page is respected across the whole site.
+  const GA_MEASUREMENT_ID = 'G-YW4GQY24EQ';
+  const CONSENT_KEY = 'landfall_cookie_consent';
+
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+
+  function loadMailchimpTracking() {
+    (function(c,h,i,m,p){
+      m=c.createElement(h), p=c.getElementsByTagName(h)[0];
+      m.async=1; m.src=i;
+      p.parentNode.insertBefore(m,p);
+    })(document,"script","https://chimpstatic.com/mcjs-connected/js/users/321c56d5183788fe9b9946ff5/0672e0c9b27ea75571ab60e39.js");
+  }
+
+  function loadAllTracking() {
+    loadGoogleAnalytics();
+    loadMailchimpTracking();
+  }
+
+  function handleConsent(accepted) {
+    localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
+    document.getElementById('consentBanner').style.display = 'none';
+    if (accepted) loadAllTracking();
+  }
+
+  (function initConsent() {
+    const stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === 'accepted') {
+      loadAllTracking();
+    } else if (stored !== 'declined') {
+      document.getElementById('consentBanner').style.display = 'flex';
+    }
+  })();
+</script>
+
+</body>
+</html>
