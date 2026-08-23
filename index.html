@@ -3,9 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LANDFALL — Coming to Android</title>
+<title>LANDFALL — Hurricane Simulator for Android | Coming Soon</title>
+
+<!-- SEO: was missing entirely before — this is what shows up in Google
+     search results under the title, and it's also what social platforms
+     fall back to using if no og:description is found. -->
+<meta name="description" content="LANDFALL is a hurricane simulator for Android. Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon — no ads, no micro-transactions, one-time purchase.">
+<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/">
+
+<!-- Open Graph — controls how this link looks when shared on Facebook,
+     Discord, Reddit, WhatsApp, iMessage, LinkedIn, etc. Without these,
+     shared links show a bare title with no image and no description,
+     which is exactly what was happening before this was added. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/">
+<meta property="og:title" content="LANDFALL — Hurricane Simulator for Android">
+<meta property="og:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon on Android.">
+<meta property="og:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
+<meta property="og:site_name" content="Feich13 Studios">
+
+<!-- Twitter/X Card — X uses its own tags rather than falling back to
+     Open Graph, so both are needed for a proper preview on X specifically. -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LANDFALL — Hurricane Simulator for Android">
+<meta name="twitter:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon on Android.">
+<meta name="twitter:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- SEO: structured data — tells Google this page is specifically about
+     a game/app (not just generic marketing text), which can improve how
+     it's represented in search results. Deliberately no aggregateRating
+     or review fields — the game hasn't launched yet, and fabricating
+     ratings data would violate Google's structured data guidelines. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LANDFALL",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "description": "A hurricane simulator for Android. Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Feich13 Studios"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1.99",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 <style>
   :root {
     --navy-deep: #050b14;
@@ -482,6 +532,7 @@
       <div class="eyebrow"><span class="pulse"></span> Currently Forming</div>
       <h1 class="title">LANDFALL</h1>
       <p class="tagline">Track it. Steer it. Name it. <strong>LANDFALL</strong> is a hurricane simulator for Android — draw the track, manage the intensity, and see how much damage a single storm can really do.</p>
+      <p style="margin-top: 10px; font-size: 15px; color: var(--text-dim); max-width: 46ch; line-height: 1.5;">A tropical cyclone simulation and storm tracking game built on real meteorology — sea surface temperature, wind shear, and basin-specific behavior all shape how your storm moves and grows.</p>
 
       <div class="hero-meta">
         <div class="meta-item">
