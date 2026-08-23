@@ -1,1 +1,6 @@
 
+User-agent: *
+Allow: /
+
+Sitemap: https://feich13-studios.github.io/Landfall-Site/sitemap.xml
+
