@@ -5,38 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LANDFALL — Hurricane Simulator for Android | Coming Soon</title>
 
-<!-- SEO: was missing entirely before — this is what shows up in Google
-     search results under the title, and it's also what social platforms
-     fall back to using if no og:description is found. -->
 <meta name="description" content="LANDFALL is a hurricane simulator for Android. Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon — no ads, no micro-transactions, one-time purchase.">
-<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/">
+<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/landfall.html">
 
-<!-- Open Graph — controls how this link looks when shared on Facebook,
-     Discord, Reddit, WhatsApp, iMessage, LinkedIn, etc. Without these,
-     shared links show a bare title with no image and no description,
-     which is exactly what was happening before this was added. -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/">
+<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/landfall.html">
 <meta property="og:title" content="LANDFALL — Hurricane Simulator for Android">
 <meta property="og:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon on Android.">
 <meta property="og:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
 <meta property="og:site_name" content="Feich13 Studios">
 
-<!-- Twitter/X Card — X uses its own tags rather than falling back to
-     Open Graph, so both are needed for a proper preview on X specifically. -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LANDFALL — Hurricane Simulator for Android">
 <meta name="twitter:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Launching soon on Android.">
 <meta name="twitter:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- SEO: structured data — tells Google this page is specifically about
-     a game/app (not just generic marketing text), which can improve how
-     it's represented in search results. Deliberately no aggregateRating
-     or review fields — the game hasn't launched yet, and fabricating
-     ratings data would violate Google's structured data guidelines. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -56,6 +39,9 @@
   }
 }
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy-deep: #050b14;
@@ -71,7 +57,6 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -84,10 +69,8 @@
       radial-gradient(ellipse at 20% 0%, rgba(45,212,192,0.06), transparent 55%),
       radial-gradient(ellipse at 90% 30%, rgba(232,72,58,0.05), transparent 45%);
   }
-
   a { color: inherit; }
 
-  /* ── TOP BAR ─────────────────────────────────────────── */
   .topbar {
     display: flex;
     align-items: center;
@@ -103,7 +86,10 @@
     font-size: 14px;
     letter-spacing: 0.14em;
     color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
   }
+  .brand:hover { color: var(--teal); }
   .brand .dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--teal);
@@ -120,7 +106,6 @@
   }
   .topbar nav a:hover { color: var(--teal); }
 
-  /* ── HERO ────────────────────────────────────────────── */
   .hero {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -194,7 +179,6 @@
     color: var(--ice);
   }
 
-  /* Signup */
   .signup {
     margin-top: 40px;
     display: flex;
@@ -259,7 +243,6 @@
     font-size: 15px;
   }
 
-  /* ── STORM CARD (hero visual) ────────────────────────── */
   .storm-visual {
     position: relative;
     width: 100%;
@@ -320,7 +303,6 @@
   }
   .stat .val.danger { color: var(--danger); }
 
-  /* ── FEATURES ─────────────────────────────────────────── */
   .section {
     max-width: 1280px;
     margin: 0 auto;
@@ -386,7 +368,6 @@
     line-height: 1.5;
   }
 
-  /* ── TICKER ───────────────────────────────────────────── */
   .ticker-wrap {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -407,7 +388,6 @@
     to { transform: translateX(-50%); }
   }
 
-  /* ── FOOTER ───────────────────────────────────────────── */
   footer {
     max-width: 1280px;
     margin: 0 auto;
@@ -453,7 +433,6 @@
     .spiral-clip img, .ticker-track, .eyebrow .pulse { animation: none !important; }
   }
 
-  /* ── COOKIE CONSENT BANNER ────────────────────────────────────────── */
   .consent-banner {
     position: fixed;
     left: 0; right: 0; bottom: 0;
@@ -520,7 +499,7 @@
   </div>
 
   <div class="topbar">
-    <div class="brand"><span class="dot"></span> FEICH13 STUDIOS</div>
+    <a class="brand" href="index.html"><span class="dot"></span> FEICH13 STUDIOS</a>
     <nav>
       <a href="#features">Gameplay</a>
       <a href="#notify">Notify Me</a>
@@ -529,7 +508,7 @@
 
   <div class="hero">
     <div>
-      <div class="eyebrow"><span class="pulse"></span> Currently Forming</div>
+      <div class="eyebrow"><span class="pulse"></span> Cleared for Release</div>
       <h1 class="title">LANDFALL</h1>
       <p class="tagline">Track it. Steer it. Name it. <strong>LANDFALL</strong> is a hurricane simulator for Android — draw the track, manage the intensity, and see how much damage a single storm can really do.</p>
       <p style="margin-top: 10px; font-size: 15px; color: var(--text-dim); max-width: 46ch; line-height: 1.5;">A tropical cyclone simulation and storm tracking game built on real meteorology — sea surface temperature, wind shear, and basin-specific behavior all shape how your storm moves and grows.</p>
@@ -541,7 +520,7 @@
         </div>
         <div class="meta-item">
           <div class="k">Launch Window</div>
-          <div class="v">Under 30 Days</div>
+          <div class="v">Production Approved</div>
         </div>
         <div class="meta-item">
           <div class="k">Price</div>
@@ -591,7 +570,7 @@
           </div>
           <div class="stat">
             <div class="label" style="font-size:10px;color:#5a7480;">ETA</div>
-            <div class="val">7–10 Days</div>
+            <div class="val">Any Day Now</div>
           </div>
         </div>
       </div>
@@ -634,16 +613,11 @@
   <footer>
     <div class="fbrand">FEICH13 STUDIOS © 2026<br><span style="font-size: 11px; opacity: 0.7;">Hurricane Ian eye photo courtesy of NASA Earth Observatory</span></div>
     <div class="fsocial">
-      <!-- UNCONFIRMED: these follow your consistent "feich13studios"
-           handle pattern, but I was never able to confirm any of them
-           are actually live accounts — verify each one resolves before
-           this goes public, or swap in the real URLs if different. -->
       <a href="https://www.tiktok.com/@feich13studios" target="_blank" rel="noopener">TikTok</a>
       <a href="https://www.instagram.com/feich13studios" target="_blank" rel="noopener">Instagram</a>
       <a href="https://x.com/feich13studios" target="_blank" rel="noopener">X</a>
       <a href="https://www.youtube.com/@feich13studios" target="_blank" rel="noopener">YouTube</a>
       <a href="https://www.facebook.com/feich13studios" target="_blank" rel="noopener">Facebook</a>
-      <!-- CONFIRMED — your actual Play Console listing URL, given directly this session -->
       <a href="https://play.google.com/store/apps/details?id=feich13.landfall.aab" target="_blank" rel="noopener">Google Play</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
@@ -727,14 +701,6 @@
   })();
 </script>
 
-<!-- FIX: this tracking pixel used to sit INSIDE the <script> block above.
-     An <img> tag is not valid JavaScript — a syntax error anywhere in a
-     <script> block silently kills the ENTIRE block, not just that line.
-     That meant the ticker never populated, the cookie consent banner
-     logic never ran (so GA4/Mailchimp tracking may never have loaded),
-     and the signup confirmation message never appeared — all silently,
-     with no visible error unless someone opened DevTools. Moved outside
-     the script block, where an <img> actually belongs. -->
 <img src="https://tracker.metricool.com/c3po.jpg?hash=612402a5cc562f1e63303d74453e1abc" style="display:none;" alt=""/>
 
 </body>
