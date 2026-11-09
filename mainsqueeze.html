@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Squeeze — Lemonade Stand Tycoon Game for Android | Feich13 Studios</title>
+
+<meta name="description" content="Main Squeeze is a lemonade stand tycoon game for Android. Read the weather, perfect your recipe, serve the queue and grow from a cardboard box in the backyard to a global lemonade empire. Pay once: no ads, no in-app purchases, plays offline.">
+<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/mainsqueeze.html">
+<link rel="icon" type="image/png" href="assets/mainsqueeze/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/mainsqueeze.html">
+<meta property="og:title" content="Main Squeeze — Lemonade Stand Tycoon for Android">
+<meta property="og:description" content="From a cardboard box in the backyard to a global lemonade empire. Coming soon to Google Play.">
+<meta property="og:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
+<meta property="og:site_name" content="Feich13 Studios">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Main Squeeze — Lemonade Stand Tycoon for Android">
+<meta name="twitter:description" content="From a cardboard box in the backyard to a global lemonade empire. Coming soon to Google Play.">
+<meta name="twitter:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Main Squeeze",
+  "genre": ["Simulation", "Tycoon", "Business"],
+  "gamePlatform": "Android",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "inLanguage": ["en", "fr", "es", "pt", "ar", "it", "de", "zh", "ja"],
+  "description": "A lemonade stand tycoon game. Read the weather, perfect your recipe and grow from a backyard stand to a global lemonade empire.",
+  "url": "https://feich13-studios.github.io/Landfall-Site/mainsqueeze.html",
+  "author": { "@type": "Organization", "name": "Feich13 Studios" },
+  "playMode": "SinglePlayer",
+  "contentRating": "PEGI 3",
+  "image": "https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg",
+  "publisher": { "@type": "Organization", "name": "Feich13 Studios" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@600;700&family=Baloo+2:wght@600;700;800&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #3a2618;
+    --cream: #fff6dc;
+    --cream-2: #fdebb8;
+    --lemon: #ffd93b;
+    --lemon-deep: #f2b705;
+    --leaf: #5cb85c;
+    --leaf-deep: #3d8f37;
+    --sky: #7fd1ff;
+    --navy: #08121e;
+    --ice: #c8e6eb;
+    --teal: #2dd4c0;
+    --red: #e0423a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Fredoka', sans-serif; font-weight: 500; overflow-x: hidden; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: 'Baloo 2', sans-serif; font-weight: 800; line-height: 1; }
+
+  /* ---- studio bar (shared brand) */
+  .topbar { background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 18px 5vw; border-bottom: 1px solid rgba(45,212,192,0.18); }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Russo One', sans-serif; font-size: 14px; letter-spacing: 0.14em; color: #5a7480; text-decoration: none; }
+  .brand:hover { color: var(--lemon); }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lemon); box-shadow: 0 0 8px var(--lemon); }
+  .topbar nav a { text-decoration: none; color: #8aa3ad; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; margin-left: 26px; text-transform: uppercase; }
+  .topbar nav a:hover { color: var(--lemon); }
+
+  /* ---- studio mark: lemonade fills FEICH, 13 is ice (same art as the game's splash) */
+  .splash { background: radial-gradient(ellipse at 50% 120%, #12304a 0%, var(--navy) 60%); padding: 44px 5vw 40px; text-align: center; }
+  .smark { display: inline-flex; align-items: flex-start; gap: 0; width: min(560px, 86vw); }
+  .smark .feich { position: relative; flex: 957; aspect-ratio: 957 / 261; }
+  .smark .feich .glass { position: absolute; inset: 0; background: url('assets/mainsqueeze/feich_glass.png') center/contain no-repeat; }
+  .smark .feich .liquid {
+    position: absolute; inset: 0;
+    -webkit-mask: url('data:image/png;base64,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') center/contain no-repeat;
+            mask: url('data:image/png;base64,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') center/contain no-repeat;
+    background: url('assets/mainsqueeze/lemonade_liquid.png') 0 0 / 146% auto repeat-x;
+    background-position: 0 130%;
+    animation: pour 2.4s .4s cubic-bezier(.45,.05,.3,1) forwards, slosh 2.6s ease-in-out infinite;
+  }
+  @keyframes pour { from { background-position-y: 135%; } to { background-position-y: 22%; } }
+  @keyframes slosh { 0%,100% { background-position-x: 0%; } 50% { background-position-x: 30%; } }
+  .smark .thirteen { flex: 344; aspect-ratio: 354 / 331; margin-left: -1%; background: url('assets/mainsqueeze/thirteen_ice.png') top center/contain no-repeat;
+    opacity: 0; transform: scale(1.3); animation: freeze .5s 1.6s cubic-bezier(.3,1.6,.5,1) forwards; }
+  @keyframes freeze { to { opacity: 1; transform: none; } }
+  .splash .studios { margin-top: 8px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.9em; padding-left: 0.9em; color: var(--ice); opacity: 0; animation: fade .6s 2.3s forwards; }
+  .splash .presents { margin-top: 6px; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.3em; color: #5a7480; text-transform: uppercase; opacity: 0; animation: fade .6s 2.6s forwards; }
+  @keyframes fade { to { opacity: 1; } }
+
+  /* ---- hero */
+  .hero { position: relative; background: linear-gradient(180deg, #47b6ee 0%, #9fdcff 55%, #c9f0ff 100%); overflow: hidden; }
+  .hero::after { content: ""; position: absolute; left: -5%; right: -5%; bottom: -1px; height: 90px; background: var(--cream); border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 5vh 5vw 120px; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 40px; align-items: center; }
+  .hero .logo { width: min(520px, 100%); filter: drop-shadow(0 10px 0 rgba(58,38,24,0.15)); }
+  .soon { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--lemon); font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: 13px; padding: 7px 14px; border-radius: 4px; margin-bottom: 14px; }
+  .soon .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--lemon); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+  .hero p.tag { font-size: 21px; line-height: 1.5; margin: 18px 0 24px; max-width: 44ch; }
+  .hero p.tag strong { color: #1d5f9b; }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .chip { background: rgba(255,255,255,0.75); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 15px; }
+  .chip b { color: var(--leaf-deep); }
+  .cta { display: inline-block; background: var(--lemon); color: var(--ink); border: 3px solid var(--ink); box-shadow: 0 6px 0 var(--ink); border-radius: 14px; padding: 14px 28px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .cta:hover { transform: translateY(2px); box-shadow: 0 4px 0 var(--ink); }
+  .cta.green { background: var(--leaf); color: #fff; }
+  .shot-frame { position: relative; border: 4px solid var(--ink); border-radius: 22px; overflow: hidden; box-shadow: 0 12px 0 rgba(58,38,24,0.25); transform: rotate(1.5deg); background: #000; }
+  .shot-frame img { display: block; width: 100%; height: auto; }
+  .hero .mascot { position: absolute; width: 130px; left: -40px; bottom: -40px; animation: bob 3s ease-in-out infinite; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.25)); }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-12px) rotate(6deg); } }
+
+  /* ---- sections */
+  .section { max-width: 1240px; margin: 0 auto; padding: 7vh 5vw; }
+  .section-head { text-align: center; margin-bottom: 36px; }
+  .section-head h2 { font-size: clamp(34px, 4.5vw, 52px); }
+  .section-head p { margin-top: 10px; font-size: 19px; color: #6b5341; }
+  .stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .stage { background: #fff; border: 3px solid var(--ink); border-radius: 18px; padding: 18px 18px 22px; box-shadow: 0 6px 0 rgba(58,38,24,0.2); position: relative; }
+  .stage .num { position: absolute; top: -16px; left: 16px; background: var(--ink); color: var(--lemon); font-family: 'Baloo 2', sans-serif; font-weight: 800; border-radius: 10px; padding: 2px 12px; font-size: 18px; }
+  .stage .pic { height: 150px; display: flex; align-items: flex-end; justify-content: center; border-radius: 12px; margin-bottom: 14px; padding: 10px; }
+  .stage .pic img { max-width: 100%; max-height: 135px; }
+  .stage h3 { font-size: 26px; margin-bottom: 6px; }
+  .stage p { font-size: 15.5px; line-height: 1.45; color: #5a4433; }
+  .stage .tiers { margin-top: 10px; font-size: 13px; color: #8a6d55; line-height: 1.5; }
+  .s1 .pic { background: linear-gradient(#bde9ff, #8ccc66); } .s2 .pic { background: linear-gradient(#cbe3f0, #d6cfc1); }
+  .s3 .pic { background: linear-gradient(#f6eddf, #efe2cc); } .s4 .pic { background: linear-gradient(#ffd685, #e9dfcf); }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature { background: var(--cream-2); border: 3px solid var(--ink); border-radius: 18px; padding: 22px; }
+  .feature .ic { width: 64px; height: 64px; object-fit: contain; margin-bottom: 10px; display: block; }
+  .feature h3 { font-size: 24px; margin-bottom: 8px; }
+  .feature p { font-size: 16px; line-height: 1.5; color: #5a4433; }
+
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .gallery figure { border: 3px solid var(--ink); border-radius: 16px; overflow: hidden; background: #000; }
+  .gallery img { display: block; width: 100%; height: auto; }
+  .gallery figure { cursor: zoom-in; }
+  .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(8,18,30,.92); display: none; align-items: center; justify-content: center; padding: 3vw; cursor: zoom-out; }
+  .lightbox.on { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; border: 4px solid var(--ink); border-radius: 16px; }
+  .gallery figcaption { background: var(--ink); color: var(--cream); font-size: 15px; padding: 8px 14px; }
+
+  .promise { background: var(--ink); color: var(--cream); border-radius: 24px; padding: 40px 5vw; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
+  .promise h2 { color: var(--lemon); font-size: clamp(30px, 4vw, 44px); margin-bottom: 10px; }
+  .promise p { font-size: 18px; line-height: 1.55; max-width: 60ch; }
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .langs span { border: 1px solid rgba(255,246,220,0.35); border-radius: 999px; padding: 4px 12px; font-size: 14px; }
+  .promise img { width: 170px; }
+
+  .access { margin-top: 18px; font-size: 16px; color: #e9d9b0; }
+  .play-btn { display: inline-flex; align-items: center; gap: 12px; background: #111; color: #fff; border: 3px solid var(--ink); border-radius: 14px; padding: 10px 24px 10px 18px; text-decoration: none; box-shadow: 0 6px 0 var(--ink); font-family: 'Baloo 2', sans-serif; font-weight: 700; line-height: 1.05; }
+  .play-btn small { display: block; font-size: 13px; font-weight: 600; letter-spacing: .04em; opacity: .85; }
+  .play-btn b { font-size: 24px; font-weight: 800; }
+  .play-btn svg { width: 30px; height: 30px; }
+  body:not(.live) .when-live, body.live .when-soon { display: none !important; }
+  .signup-wrap { text-align: center; }
+  .signup { display: flex; max-width: 480px; margin: 22px auto 0; border: 3px solid var(--ink); border-radius: 14px; overflow: hidden; background: #fff; position: relative; box-shadow: 0 6px 0 rgba(58,38,24,0.2); }
+  .signup input { flex: 1; border: none; padding: 16px 18px; font-family: 'Fredoka', sans-serif; font-size: 17px; outline: none; color: var(--ink); }
+  .signup button { background: var(--lemon); border: none; border-left: 3px solid var(--ink); padding: 0 24px; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 18px; color: var(--ink); cursor: pointer; }
+  .signup-note { margin-top: 12px; color: #8a6d55; font-size: 15px; }
+
+  footer { background: var(--navy); border-top: 1px solid rgba(45,212,192,0.18); padding: 30px 5vw; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 7vh; }
+  footer .fbrand { font-family: 'Russo One', sans-serif; font-size: 12px; letter-spacing: 0.14em; color: #5a7480; }
+  footer .fsocial a { text-decoration: none; color: #8aa3ad; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 15px; margin-left: 20px; }
+  footer .fsocial a:hover { color: var(--lemon); }
+
+  .consent-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 999; background: #0a1420; border-top: 1px solid rgba(45,212,192,0.18); padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; box-shadow: 0 -12px 40px rgba(0,0,0,0.5); }
+  .consent-banner p { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: #a9c2ca; max-width: 62ch; margin: 0; }
+  .consent-banner a { color: var(--teal); text-decoration: underline; }
+  .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .consent-actions button { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 11px 20px; border-radius: 4px; cursor: pointer; border: 1px solid rgba(45,212,192,0.18); }
+  .consent-accept { background: var(--teal); color: #04211d; border: none !important; }
+  .consent-decline { background: transparent; color: #5a7480; }
+
+  @media (max-width: 980px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .stages { grid-template-columns: 1fr 1fr; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .hero .mascot { display: none; }
+  }
+  @media (max-width: 640px) {
+    .stages, .features, .gallery { grid-template-columns: 1fr; }
+    .promise { grid-template-columns: 1fr; }
+    .promise img { width: 120px; }
+    .topbar nav a { margin-left: 14px; }
+    footer .fsocial a { margin: 0 14px 0 0; }
+    .consent-banner { flex-direction: column; align-items: stretch; text-align: center; }
+    .consent-actions { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="consent-banner" id="consentBanner" style="display: none;">
+    <p>This site uses Google Analytics and Mailchimp tracking to understand visitor traffic and support our email signup. No personal data is collected — see our <a href="privacy-mainsqueeze.html">Privacy Policy</a> for details.</p>
+    <div class="consent-actions">
+      <button class="consent-decline" onclick="handleConsent(false)">Decline</button>
+      <button class="consent-accept" onclick="handleConsent(true)">Accept</button>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <a class="brand" href="index.html"><span class="dot"></span> FEICH13 STUDIOS</a>
+    <nav>
+      <a href="index.html">Studio</a>
+      <a href="#features">Gameplay</a>
+      <a href="#screens">Screenshots</a>
+      <a class="when-soon" href="#updates">Get Notified</a>
+      <a class="when-live play-link" href="#">Google Play</a>
+    </nav>
+  </div>
+
+  <div class="splash" aria-label="Feich13 Studios presents">
+    <div class="smark">
+      <div class="feich"><div class="glass"></div><div class="liquid"></div></div>
+      <div class="thirteen"></div>
+    </div>
+    <div class="studios">STUDIOS</div>
+    <div class="presents">presents</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="soon when-soon"><span class="pulse"></span> Coming soon to Google Play</div>
+        <div class="soon when-live"><span class="pulse"></span> Out now on Google Play</div>
+        <h1><img class="logo" src="assets/mainsqueeze/logo.png" alt="Main Squeeze — From Backyard to Empire" width="1000" height="450"></h1>
+        <p class="tag">A <strong>lemonade stand tycoon game</strong> for Android. Read the weather, perfect your recipe, keep the queue happy and grow from a wobbly cardboard box to a global lemonade empire.</p>
+        <div class="badges">
+          <span class="chip"><b>✓</b> No ads</span>
+          <span class="chip"><b>✓</b> No in-app purchases</span>
+          <span class="chip"><b>✓</b> Plays offline</span>
+          <span class="chip"><b>✓</b> 9 languages</span>
+        </div>
+        <a class="cta when-soon" href="#updates">Tell me when it launches</a>
+        <a class="play-btn play-link when-live" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34a853" d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z"/><path fill="#fbbc04" d="m17.3 8.5-3.5 3.5 3.5 3.5 4-2.3c.9-.5.9-1.9 0-2.4z"/><path fill="#4285f4" d="M3.6 1.8c.3-.2.8-.2 1.2 0l12.5 6.7-3.5 3.5z"/><path fill="#ea4335" d="m13.8 12 3.5 3.5-12.5 6.7c-.4.2-.9.2-1.2 0z"/></svg><span><small>GET IT ON</small><b>Google Play</b></span></a>
+      </div>
+      <div style="position:relative">
+        <div class="shot-frame"><img src="assets/mainsqueeze/scene_backyard.jpg" alt="Main Squeeze gameplay: customers queue at a striped lemonade stand in a sunny backyard" width="1280" height="720"></div>
+        <img class="mascot" src="assets/mainsqueeze/mascot.png" alt="Zesty the lemon" width="130" height="130">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="career">
+    <div class="section-head">
+      <h2>From backyard to empire</h2>
+      <p>Four career stages, sixteen stands, one very ambitious lemon.</p>
+    </div>
+    <div class="stages">
+      <div class="stage s1"><span class="num">1</span><div class="pic"><img src="assets/mainsqueeze/stand_by4.png" alt="Bespoke backyard lemonade stand" loading="lazy"></div>
+        <h3>The Backyard</h3><p>Start with pocket money and a cardboard box. Learn what the neighbours like and how the weather drives demand.</p>
+        <div class="tiers">Cardboard Box → Folding Table → Kitchen Cart → Bespoke Stand</div></div>
+      <div class="stage s2"><span class="num">2</span><div class="pic"><img src="assets/mainsqueeze/stand_st4.png" alt="Branded lemonade food truck" loading="lazy"></div>
+        <h3>The High Street</h3><p>Go mobile. Office lunch rushes, seafront tourists and match-day crowds, with pricier pitches.</p>
+        <div class="tiers">Trike Cart → Ice-Cream Van → Lemonade Truck → Branded Truck</div></div>
+      <div class="stage s3"><span class="num">3</span><div class="pic"><img src="assets/mainsqueeze/stand_m4.png" alt="Anchor juice bar in a shopping mall" loading="lazy"></div>
+        <h3>The Mall</h3><p>Indoors, so the weather barely matters. Families buy rounds, and queues need real staff.</p>
+        <div class="tiers">Pop-Up Cart → Kiosk → Shop Unit → Anchor Juice Bar</div></div>
+      <div class="stage s4"><span class="num">4</span><div class="pic"><img src="assets/mainsqueeze/stand_e4.png" alt="Main Squeeze global flagship store" loading="lazy"></div>
+        <h3>The Empire</h3><p>Flagship stores, franchises and a bottling plant, then keep growing for as long as you like.</p>
+        <div class="tiers">Flagship → Franchises → HQ &amp; Bottling → Global Brand</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="features" style="padding-top: 2vh;">
+    <div class="section-head">
+      <h2>How you'll play</h2>
+      <p>Plan each morning, trade through the day, learn from the results.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/weather_sunny.png" alt="" width="64" height="64" loading="lazy"><h3>Read the weather</h3><p>Four seasons and a daily forecast that’s usually right. Heatwaves bring queues, rain empties the street, and cold days call for hot lemon &amp; honey.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/ingredient_lemon.png" alt="" width="64" height="64" loading="lazy"><h3>Perfect your recipe</h3><p>Lemons for tang, sugar for sweet, ice for cold. Nine kinds of customer, from kids to joggers to executives, all want something different.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/cash.png" alt="" width="64" height="64" loading="lazy"><h3>Price it right</h3><p>A live price guide shows who’ll pay what. Change the price mid-day as the crowd builds. Too high and they walk, too low and you’re giving it away.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/customers.png" alt="" width="64" height="64" loading="lazy"><h3>Regulars, rivals and critics</h3><p>Win regulars who come back daily and ask for their favourite. Word of mouth spreads, rival stands move in, and a secret food critic might be in the queue.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/bank.png" alt="" width="64" height="64" loading="lazy"><h3>Run a real business</h3><p>Staff, supplier deals, bulk orders, weather insurance, lemon price contracts and bank loans. Keep your kit serviced or it breaks down mid-rush.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/ingredient_ice.png" alt="" width="64" height="64" loading="lazy"><h3>Manage your stock</h3><p>Ice melts and lemons spoil. Grow from the corner shop to the wholesaler to your own lemon grove, or hire a stock manager to do it for you.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/pet_dog.png" alt="" width="64" height="64" loading="lazy"><h3>Make it yours</h3><p>Create your character, name your stand, decorate with bunting, lights and parasols, and adopt a stand dog or cat.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/flag.png" alt="" width="64" height="64" loading="lazy"><h3>Challenges and sandbox</h3><p>Six challenge scenarios rated in stars, plus a sandbox with unlimited cash to build your dream stand.</p></div>
+      <div class="feature"><img class="ic" src="assets/mainsqueeze/icons/trophy.png" alt="" width="64" height="64" loading="lazy"><h3>Play your way</h3><p>Relaxed, Normal or Hardcore careers, 28 achievements, a daily streak bonus and a full career stats screen.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="screens" style="padding-top: 2vh;">
+    <div class="section-head">
+      <h2>Screenshots</h2>
+      <p>Tap any screenshot to enlarge it.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="assets/mainsqueeze/screen1.jpg" alt="From cardboard box to global brand: 16 stands across 4 stages" loading="lazy" width="1280" height="720"><figcaption>From cardboard box to global brand</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen2.jpg" alt="Serve the queue, live: Every customer reacts to your taste and price" loading="lazy" width="1280" height="720"><figcaption>Serve the queue, live</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen3.jpg" alt="Perfect your recipe: Plan each morning: recipe, price and stock" loading="lazy" width="1280" height="720"><figcaption>Perfect your recipe</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen4.jpg" alt="16 stands to unlock: Backyard, high street, mall and empire" loading="lazy" width="1280" height="720"><figcaption>16 stands to unlock</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen5.jpg" alt="Run a real business: Insurance, loans, contracts and hot drinks for cold days" loading="lazy" width="1280" height="720"><figcaption>Run a real business</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen6.jpg" alt="Regulars, rivals and critics: Keep them happy and word spreads" loading="lazy" width="1280" height="720"><figcaption>Regulars, rivals and critics</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen7.jpg" alt="Make it yours: Your character, your stand, your pet" loading="lazy" width="1280" height="720"><figcaption>Make it yours</figcaption></figure>
+      <figure><img src="assets/mainsqueeze/screen8.jpg" alt="Challenges and achievements: Six challenges and 28 achievements" loading="lazy" width="1280" height="720"><figcaption>Challenges and achievements</figcaption></figure>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot"><img alt=""></div>
+
+  <section class="section">
+    <div class="promise">
+      <div>
+        <h2>Buy it once. That's it.</h2>
+        <p>No ads, no energy timers, no shops inside the game. Main Squeeze is a single purchase, playable offline, and translated into nine languages.</p>
+        <p class="access">Accessibility options: larger text, colour-blind friendly colours and a left-handed layout.</p>
+        <div class="langs"><span>English</span><span>Français</span><span>Español</span><span>Português</span><span>العربية</span><span>Italiano</span><span>Deutsch</span><span>中文</span><span>日本語</span></div>
+      </div>
+      <img src="assets/mainsqueeze/app-icon.png" alt="Main Squeeze app icon" width="170" height="170" style="border-radius: 34px; border: 3px solid var(--cream);">
+    </div>
+  </section>
+
+  <section class="section signup-wrap" id="updates">
+    <div class="section-head" style="margin-bottom: 0;">
+      <h2 class="when-soon">Be first in the queue</h2><h2 class="when-live">Stay in the loop</h2>
+      <p class="when-soon">Get one email when Main Squeeze lands on Google Play, plus the occasional studio update.</p><p class="when-live">Updates, new challenges and news from the studio. Occasional emails only.</p>
+    </div>
+    <form class="signup" id="notify"
+          action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
+          method="post" target="mc-hidden-iframe" onsubmit="handleMailchimpSubmit()">
+      <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
+      </div>
+      <button type="submit" id="notifyBtn">Notify me</button>
+    </form>
+    <iframe name="mc-hidden-iframe" style="display:none;" title="mailchimp-submit"></iframe>
+    <div class="signup-note" id="notifyNote">No spam. Unsubscribe any time.</div>
+  </section>
+
+  <footer>
+    <div class="fbrand">FEICH13 STUDIOS © 2026</div>
+    <div class="fsocial">
+      <a href="index.html">Studio</a>
+      <a href="landfall.html">LANDFALL</a>
+      <a href="https://www.tiktok.com/@feich13studios" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/feich13studios" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/feich13studios" target="_blank" rel="noopener">X</a>
+      <a href="https://www.youtube.com/@feich13studios" target="_blank" rel="noopener">YouTube</a>
+      <a href="privacy-mainsqueeze.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+<script>
+  // ---- Launch switch: when the game is live on Google Play, set PLAY_LIVE to true.
+  const PLAY_LIVE = false;
+  const PLAY_URL = 'https://play.google.com/store/apps/details?id=feich13.mainsqueeze';
+  if (PLAY_LIVE) {
+    document.body.classList.add('live');
+    document.querySelectorAll('.play-link').forEach(a => { a.href = PLAY_URL; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  // ---- Screenshot lightbox
+  const lb = document.getElementById('lightbox');
+  document.querySelectorAll('.gallery img').forEach(img => img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.querySelector('img').alt = img.alt; lb.classList.add('on'); }));
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  function handleMailchimpSubmit() {
+    const btn = document.getElementById('notifyBtn');
+    const note = document.getElementById('notifyNote');
+    btn.textContent = 'Squeezing...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('notify').style.display = 'none';
+      note.textContent = "You're in the queue! We'll email you the day Main Squeeze launches.";
+      note.style.color = '#3d8f37';
+    }, 900);
+    return true;
+  }
+
+  const GA_MEASUREMENT_ID = 'G-YW4GQY24EQ';
+  const CONSENT_KEY = 'landfall_cookie_consent';
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+  function loadMailchimpTracking() {
+    (function(c,h,i,m,p){
+      m=c.createElement(h), p=c.getElementsByTagName(h)[0];
+      m.async=1; m.src=i;
+      p.parentNode.insertBefore(m,p);
+    })(document,"script","https://chimpstatic.com/mcjs-connected/js/users/321c56d5183788fe9b9946ff5/0672e0c9b27ea75571ab60e39.js");
+  }
+  function loadAllTracking() { loadGoogleAnalytics(); loadMailchimpTracking(); }
+  function handleConsent(accepted) {
+    localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
+    document.getElementById('consentBanner').style.display = 'none';
+    if (accepted) loadAllTracking();
+  }
+  (function initConsent() {
+    const stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === 'accepted') loadAllTracking();
+    else if (stored !== 'declined') document.getElementById('consentBanner').style.display = 'flex';
+  })();
+</script>
+</body>
+</html>

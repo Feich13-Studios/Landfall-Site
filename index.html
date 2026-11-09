@@ -3,45 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LANDFALL — Hurricane Simulator for Android | Out Now</title>
+<title>Feich13 Studios — Indie Games for Android | LANDFALL &amp; Main Squeeze</title>
 
-<meta name="description" content="LANDFALL is a hurricane simulator for Android. Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Out now on Google Play — no ads, no micro-transactions, one-time purchase.">
-<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/landfall.html">
+<meta name="description" content="Feich13 Studios is a UK indie studio making simulation games for Android. Play LANDFALL, the hurricane simulator, and look out for Main Squeeze, the lemonade stand tycoon game. No ads, no micro-transactions.">
+<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/landfall.html">
-<meta property="og:title" content="LANDFALL — Hurricane Simulator for Android">
-<meta property="og:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Out now on Android.">
-<meta property="og:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
+<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/">
+<meta property="og:title" content="Feich13 Studios — Indie Games for Android">
+<meta property="og:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze is coming soon.">
+<meta property="og:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
 <meta property="og:site_name" content="Feich13 Studios">
-
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LANDFALL — Hurricane Simulator for Android">
-<meta name="twitter:description" content="Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do. Out now on Android.">
-<meta name="twitter:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg">
+<meta name="twitter:title" content="Feich13 Studios — Indie Games for Android">
+<meta name="twitter:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze is coming soon.">
+<meta name="twitter:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "LANDFALL",
-  "applicationCategory": "GameApplication",
-  "operatingSystem": "Android",
-  "description": "A hurricane simulator for Android. Draw the storm's track, manage real atmospheric conditions, and see how much damage a single storm can do.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Feich13 Studios"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "1.99",
-    "priceCurrency": "USD"
-  }
+  "@type": "Organization",
+  "name": "Feich13 Studios",
+  "url": "https://feich13-studios.github.io/Landfall-Site/",
+  "email": "feich13studios@gmail.com",
+  "sameAs": [
+    "https://www.tiktok.com/@feich13studios",
+    "https://www.instagram.com/feich13studios",
+    "https://x.com/feich13studios",
+    "https://www.youtube.com/@feich13studios",
+    "https://www.facebook.com/feich13studios"
+  ]
 }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy-deep: #050b14;
@@ -54,11 +50,11 @@
     --text-body: #a9c2ca;
     --text-dim: #5a7480;
     --border: rgba(45, 212, 192, 0.18);
+    --lemon: #ffd93b;
+    --leaf: #5cb85c;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--navy-deep);
     color: var(--text-body);
@@ -66,426 +62,122 @@
     font-weight: 500;
     overflow-x: hidden;
     background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(45,212,192,0.06), transparent 55%),
-      radial-gradient(ellipse at 90% 30%, rgba(232,72,58,0.05), transparent 45%);
+      radial-gradient(ellipse at 15% 0%, rgba(45,212,192,0.07), transparent 55%),
+      radial-gradient(ellipse at 90% 40%, rgba(255,217,59,0.05), transparent 45%);
   }
   a { color: inherit; }
 
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 5vw;
-    border-bottom: 1px solid var(--border);
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Russo One', sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.14em;
-    color: var(--text-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 5vw; border-bottom: 1px solid var(--border); }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Russo One', sans-serif; font-size: 14px; letter-spacing: 0.14em; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
   .brand:hover { color: var(--teal); }
-  .brand .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--teal);
-    box-shadow: 0 0 8px var(--teal);
-  }
-  .topbar nav a {
-    text-decoration: none;
-    color: var(--text-dim);
-    font-size: 14px;
-    letter-spacing: 0.06em;
-    margin-left: 28px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+  .topbar nav a { text-decoration: none; color: var(--text-dim); font-size: 14px; letter-spacing: 0.06em; margin-left: 28px; text-transform: uppercase; transition: color 0.2s; }
   .topbar nav a:hover { color: var(--teal); }
 
-  .hero {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 40px;
-    padding: 7vh 5vw 6vh;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--danger);
-    text-transform: uppercase;
-    border: 1px solid rgba(232,72,58,0.35);
-    background: rgba(232,72,58,0.08);
-    padding: 6px 12px;
-    border-radius: 3px;
-    margin-bottom: 22px;
-  }
-  .eyebrow .pulse {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--danger);
-    animation: pulse 1.6s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.7); }
-  }
+  /* ---- studio mark */
+  .hero { text-align: center; padding: 12vh 5vw 9vh; max-width: 1100px; margin: 0 auto; }
+  .mark { display: inline-flex; flex-direction: column; align-items: center; }
+  .mark .word { font-family: 'Russo One', sans-serif; font-size: clamp(64px, 12vw, 150px); line-height: 0.9; letter-spacing: 0.01em; color: #f2fbfa; text-shadow: 0 0 50px rgba(45,212,192,0.25); white-space: nowrap; }
+  .mark .word .n { color: var(--teal); text-shadow: 0 0 28px rgba(45,212,192,0.6); }
+  .mark .studios { margin-top: 14px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: clamp(16px, 2.2vw, 26px); letter-spacing: 0.9em; padding-left: 0.9em; color: var(--ice); }
+  .mark .word span.l { display: inline-block; animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both; }
+  .mark .word span.l:nth-child(2) { animation-delay: .06s } .mark .word span.l:nth-child(3) { animation-delay: .12s }
+  .mark .word span.l:nth-child(4) { animation-delay: .18s } .mark .word span.l:nth-child(5) { animation-delay: .24s }
+  .mark .word span.n { display: inline-block; animation: rise 0.9s .36s cubic-bezier(.2,.8,.2,1) both, glow 3.5s 1.4s ease-in-out infinite; }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes glow { 0%,100% { text-shadow: 0 0 22px rgba(45,212,192,0.5); } 50% { text-shadow: 0 0 46px rgba(45,212,192,0.95); } }
+  .lede { margin: 34px auto 0; max-width: 58ch; font-size: 21px; line-height: 1.55; }
+  .lede strong { color: var(--teal); font-weight: 700; }
+  .pill-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+  .pill { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ice); border: 1px solid var(--border); background: var(--teal-dim); padding: 7px 14px; border-radius: 999px; }
+  .pill .tick { color: var(--teal); margin-right: 6px; }
 
-  h1.title {
-    font-family: 'Russo One', sans-serif;
-    font-size: clamp(52px, 8vw, 94px);
-    line-height: 0.92;
-    letter-spacing: 0.01em;
-    color: #f2fbfa;
-    text-shadow: 0 0 40px rgba(45,212,192,0.25);
-  }
+  /* ---- games */
+  .section { max-width: 1280px; margin: 0 auto; padding: 4vh 5vw 8vh; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 30px; }
+  .section-head h2 { font-family: 'Russo One', sans-serif; font-size: 28px; color: #f2fbfa; letter-spacing: 0.02em; }
+  .section-head span { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+  .games { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .game { position: relative; border-radius: 14px; overflow: hidden; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border); text-decoration: none; isolation: isolate; transition: transform .25s, box-shadow .25s; }
+  .game:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+  .game .art { position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center; transition: transform .6s; }
+  .game:hover .art { transform: scale(1.04); }
+  .game .veil { position: absolute; inset: 0; z-index: -1; }
+  .game .body { padding: 34px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 12px; border-radius: 3px; margin-bottom: 16px; }
+  .badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+  .game h3 { font-size: clamp(40px, 5vw, 62px); line-height: 0.95; margin-bottom: 14px; }
+  .game p { font-size: 18px; line-height: 1.5; max-width: 44ch; margin-bottom: 22px; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 8px; font-weight: 700; font-size: 16px; letter-spacing: 0.04em; text-decoration: none; transition: filter .2s, transform .2s; }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-  .tagline {
-    margin-top: 22px;
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-body);
-    max-width: 46ch;
-    line-height: 1.5;
-  }
-  .tagline strong { color: var(--teal); font-weight: 700; }
+  .game.landfall .art { background-color: #0a1420; background-image: url('https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg'), radial-gradient(circle at 60% 35%, rgba(200,230,235,0.35) 0 8%, rgba(45,212,192,0.18) 9% 30%, transparent 55%); }
+  .game.landfall .veil { background: linear-gradient(180deg, rgba(5,11,20,0.15) 0%, rgba(5,11,20,0.75) 55%, rgba(5,11,20,0.97) 100%); }
+  .game.landfall .badge { color: var(--danger); border: 1px solid rgba(232,72,58,0.35); background: rgba(232,72,58,0.12); }
+  .game.landfall h3 { font-family: 'Russo One', sans-serif; color: #f2fbfa; text-shadow: 0 0 40px rgba(45,212,192,0.3); }
+  .game.landfall p { color: var(--text-body); }
+  .game.landfall .primary { background: var(--teal); color: var(--navy-deep); }
+  .game.landfall .ghost { border: 1px solid var(--border); color: var(--ice); background: rgba(5,11,20,0.5); }
 
-  .hero-meta {
-    margin-top: 32px;
-    display: flex;
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-  .meta-item .k {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .meta-item .v {
-    font-family: 'Russo One', sans-serif;
-    font-size: 18px;
-    color: var(--ice);
-  }
+  .game.squeeze { border-color: rgba(255,217,59,0.35); }
+  .game.squeeze .art { background-image: url('assets/mainsqueeze/scene_backyard.jpg'); }
+  .game.squeeze .veil { background: linear-gradient(180deg, rgba(58,38,24,0) 0%, rgba(58,38,24,0.55) 50%, rgba(43,28,17,0.96) 100%); }
+  .game.squeeze .badge { color: #3a2618; background: var(--lemon); }
+  .game.squeeze h3 { font-family: 'Baloo 2', sans-serif; font-weight: 800; color: var(--lemon); -webkit-text-stroke: 2px #3a2618; paint-order: stroke fill; text-shadow: 0 4px 0 #3a2618; }
+  .game.squeeze p { color: #fff6dc; }
+  .game.squeeze .primary { background: var(--lemon); color: #3a2618; }
+  .game.squeeze .ghost { border: 1px solid rgba(255,217,59,0.5); color: #fff6dc; background: rgba(43,28,17,0.5); }
+  .game.squeeze .mascot { position: absolute; top: 22px; right: 22px; width: 120px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.4)); animation: bob 3s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-10px) rotate(4deg); } }
 
-  .signup {
-    margin-top: 40px;
-    display: flex;
-    gap: 0;
-    max-width: 440px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    background: var(--navy-panel);
-  }
-  .signup input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 16px 18px;
-    color: var(--ice);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    outline: none;
-  }
+  /* ---- about */
+  .about { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
+  .about p { font-size: 19px; line-height: 1.6; margin-bottom: 16px; }
+  .about p strong { color: #f2fbfa; }
+  .facts { background: var(--navy-panel); border: 1px solid var(--border); border-radius: 10px; padding: 24px 26px; }
+  .fact { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(45,212,192,0.08); }
+  .fact:last-child { border-bottom: 0; }
+  .fact .k { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+  .fact .v { font-family: 'Russo One', sans-serif; font-size: 16px; color: var(--ice); text-align: right; }
+
+  /* ---- signup */
+  .signup-wrap { text-align: center; }
+  .signup-wrap h2 { font-family: 'Russo One', sans-serif; color: #f2fbfa; font-size: 30px; margin-bottom: 10px; }
+  .signup-wrap p { font-size: 18px; margin-bottom: 22px; }
+  .signup { display: flex; max-width: 460px; margin: 0 auto; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--navy-panel); position: relative; }
+  .signup input { flex: 1; background: transparent; border: none; padding: 16px 18px; color: var(--ice); font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; outline: none; }
   .signup input::placeholder { color: var(--text-dim); }
-  .signup button {
-    background: var(--teal);
-    border: none;
-    color: #04211d;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 14px;
-    padding: 0 22px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .signup button:hover { background: #45e8d5; }
-  .signup-note { margin-top: 10px; font-size: 12px; color: var(--text-dim); }
+  .signup button { background: var(--teal); color: var(--navy-deep); border: none; padding: 0 26px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+  .signup-note { margin-top: 12px; font-size: 14px; color: var(--text-dim); }
 
-  .clean-badges {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 18px;
-  }
-  .clean-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.03em;
-    color: var(--ice);
-    background: rgba(45, 212, 192, 0.10);
-    border: 1px solid rgba(45, 212, 192, 0.4);
-    border-radius: 30px;
-    padding: 8px 16px;
-  }
-  .clean-check {
-    color: var(--teal);
-    font-weight: 700;
-    font-size: 15px;
-  }
-
-  .storm-visual {
-    position: relative;
-    width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-  .storm-visual::before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-  .spiral-clip {
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #0d1b28;
-  }
-  .spiral-clip img {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 130%; height: 130%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    animation: spin 40s linear infinite;
-  }
-  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-  .storm-card {
-    position: absolute;
-    bottom: -6%;
-    left: -8%;
-    width: 78%;
-    background: rgba(10, 20, 32, 0.92);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px 18px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-  }
-  .storm-card .label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-  }
-  .storm-card .name {
-    font-family: 'Russo One', sans-serif;
-    font-size: 19px;
-    color: #fff;
-    margin: 2px 0 10px;
-  }
-  .stat-row { display: flex; gap: 22px; }
-  .stat .label { margin-bottom: 3px; }
-  .stat .val {
-    font-family: 'Russo One', sans-serif;
-    font-size: 15px;
-    color: var(--teal);
-  }
-  .stat .val.danger { color: var(--danger); }
-
-  .section {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 8vh 5vw;
-  }
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
-  }
-  .section-head h2 {
-    font-family: 'Russo One', sans-serif;
-    font-size: 28px;
-    color: #f2fbfa;
-  }
-  .section-head span {
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-  }
-
-  .action-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .action-card {
-    background: var(--navy-panel);
-    padding: 26px 24px;
-    position: relative;
-  }
-  .action-card::before {
-    content: '';
-    position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--teal);
-  }
-  .action-card .lv {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .action-card h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--ice);
-    margin-bottom: 8px;
-  }
-  .action-card p {
-    font-size: 14.5px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  .ticker-wrap {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: #0c1520;
-    padding: 12px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .ticker-track {
-    display: inline-block;
-    animation: ticker 42s linear infinite;
-    font-size: 14.5px;
-    color: var(--text-body);
-  }
-  .ticker-track span.sep { color: var(--teal); margin: 0 20px; }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  footer {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 6vh 5vw 5vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  footer .fbrand {
-    font-family: 'Russo One', sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-  }
-  footer .fsocial a {
-    text-decoration: none;
-    color: var(--text-dim);
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-left: 22px;
-    transition: color 0.2s;
-  }
+  footer { border-top: 1px solid var(--border); padding: 30px 5vw; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer .fbrand { font-family: 'Russo One', sans-serif; font-size: 12px; letter-spacing: 0.14em; color: var(--text-dim); }
+  footer .fsocial a { text-decoration: none; color: var(--text-dim); font-size: 14px; margin-left: 20px; letter-spacing: 0.04em; transition: color .2s; }
   footer .fsocial a:hover { color: var(--teal); }
 
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; padding-top: 4vh; }
-    .storm-visual { max-width: 320px; margin-top: 60px; margin-bottom: 90px; }
-    .signup { flex-direction: column; }
-    .signup button { padding: 14px; }
-    .storm-card {
-      position: static;
-      width: 100%;
-      margin-top: 24px;
-      left: 0;
-      bottom: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .spiral-clip img, .ticker-track, .eyebrow .pulse { animation: none !important; }
-  }
-
-  .consent-banner {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    z-index: 999;
-    background: #0a1420;
-    border-top: 1px solid var(--border);
-    padding: 18px 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-    box-shadow: 0 -12px 40px rgba(0,0,0,0.5);
-  }
-  .consent-banner p {
-    font-size: 14.5px;
-    color: var(--text-body);
-    max-width: 62ch;
-    margin: 0;
-  }
+  .consent-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 999; background: #0a1420; border-top: 1px solid var(--border); padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; box-shadow: 0 -12px 40px rgba(0,0,0,0.5); }
+  .consent-banner p { font-size: 14.5px; color: var(--text-body); max-width: 62ch; margin: 0; }
   .consent-banner a { color: var(--teal); text-decoration: underline; }
-  .consent-actions {
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .consent-actions button {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 11px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid var(--border);
-  }
-  .consent-accept {
-    background: var(--teal);
-    color: #04211d;
-    border: none !important;
-  }
-  .consent-accept:hover { background: #45e8d5; }
-  .consent-decline {
-    background: transparent;
-    color: var(--text-dim);
-  }
-  .consent-decline:hover { color: var(--ice); border-color: var(--teal); }
+  .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .consent-actions button { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 11px 20px; border-radius: 4px; cursor: pointer; border: 1px solid var(--border); }
+  .consent-accept { background: var(--teal); color: #04211d; border: none !important; }
+  .consent-decline { background: transparent; color: var(--text-dim); }
 
+  @media (max-width: 860px) {
+    .games, .about { grid-template-columns: 1fr; }
+    .game { min-height: 460px; }
+    .topbar nav a { margin-left: 16px; }
+    footer .fsocial a { margin: 0 14px 0 0; }
+    .game.squeeze .mascot { width: 84px; }
+  }
   @media (max-width: 640px) {
     .consent-banner { flex-direction: column; align-items: stretch; text-align: center; }
     .consent-actions { justify-content: center; }
+    .section-head { flex-direction: column; gap: 6px; }
   }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
@@ -501,116 +193,99 @@
   <div class="topbar">
     <a class="brand" href="index.html"><span class="dot"></span> FEICH13 STUDIOS</a>
     <nav>
-      <a href="#features">Gameplay</a>
-      <a href="https://play.google.com/store/apps/details?id=feich13.landfall.aab" target="_blank" rel="noopener">Get It Now</a>
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#updates">Updates</a>
     </nav>
   </div>
 
-  <div class="hero">
-    <div>
-      <div class="eyebrow"><span class="pulse"></span> Available Now</div>
-      <h1 class="title">LANDFALL</h1>
-      <p class="tagline">Track it. Steer it. Name it. <strong>LANDFALL</strong> is a hurricane simulator for Android — draw the track, manage the intensity, and see how much damage a single storm can really do.</p>
-      <p style="margin-top: 10px; font-size: 15px; color: var(--text-dim); max-width: 46ch; line-height: 1.5;">A tropical cyclone simulation and storm tracking game built on real meteorology — sea surface temperature, wind shear, and basin-specific behavior all shape how your storm moves and grows.</p>
-
-      <div class="hero-meta">
-        <div class="meta-item">
-          <div class="k">Platform</div>
-          <div class="v">Android</div>
-        </div>
-        <div class="meta-item">
-          <div class="k">Status</div>
-          <div class="v">Live Now</div>
-        </div>
-        <div class="meta-item">
-          <div class="k">Price</div>
-          <div class="v">One-time purchase</div>
-        </div>
-      </div>
-
-      <div class="clean-badges">
-        <div class="clean-badge">
-          <span class="clean-check">✓</span> No Ads
-        </div>
-        <div class="clean-badge">
-          <span class="clean-check">✓</span> No Micro-transactions
-        </div>
-      </div>
-
-      <a href="https://play.google.com/store/apps/details?id=feich13.landfall.aab" target="_blank" rel="noopener" class="play-cta" style="display:inline-block; margin-top:18px; padding:14px 28px; background:var(--teal); color:var(--navy-deep); font-weight:700; border-radius:8px; text-decoration:none;">Get it on Google Play</a>
-
-      <form class="signup" id="notify"
-            action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
-            method="post" target="mc-hidden-iframe"
-            onsubmit="handleMailchimpSubmit()">
-        <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
-        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-          <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
-        </div>
-        <button type="submit" id="notifyBtn">Get Updates</button>
-      </form>
-      <iframe name="mc-hidden-iframe" style="display:none;" title="mailchimp-submit"></iframe>
-      <div class="signup-note" id="notifyNote">No spam — just an email when new basins or features ship.</div>
+  <header class="hero">
+    <div class="mark" aria-label="Feich13 Studios">
+      <div class="word"><span class="l">F</span><span class="l">E</span><span class="l">I</span><span class="l">C</span><span class="l">H</span><span class="n">13</span></div>
+      <div class="studios">STUDIOS</div>
     </div>
-
-    <div class="storm-visual">
-      <div class="spiral-clip">
-        <img src="https://www.nasa.gov/wp-content/uploads/2023/03/ian_oli_2022271_lrg.jpg"
-             alt="Satellite image of a hurricane's eye, courtesy of NASA Earth Observatory">
-      </div>
-      <div class="storm-card">
-        <div class="label">Storm</div>
-        <div class="name">Hurricane Landfall</div>
-        <div class="stat-row">
-          <div class="stat">
-            <div class="label" style="font-size:10px;color:#5a7480;">Category</div>
-            <div class="val danger">5</div>
-          </div>
-          <div class="stat">
-            <div class="label" style="font-size:10px;color:#5a7480;">Wind</div>
-            <div class="val">184 mph</div>
-          </div>
-          <div class="stat">
-            <div class="label" style="font-size:10px;color:#5a7480;">ETA</div>
-            <div class="val">Out Now</div>
-          </div>
-        </div>
-      </div>
+    <p class="lede">An independent UK studio making <strong>simulation games for Android</strong>, grounded in the real world and built to be played, not to sell you things.</p>
+    <div class="pill-row">
+      <span class="pill"><span class="tick">✓</span>No ads</span>
+      <span class="pill"><span class="tick">✓</span>No micro-transactions</span>
+      <span class="pill"><span class="tick">✓</span>One-time purchase</span>
     </div>
-  </div>
+  </header>
 
-  <div class="section" id="features">
+  <section class="section" id="games">
     <div class="section-head">
-      <h2>Storm Actions</h2>
-      <span>What you'll actually be doing</span>
+      <h2>Our Games</h2>
+      <span>Out now &amp; coming soon</span>
     </div>
-    <div class="action-grid">
-      <div class="action-card">
-        <div class="lv">Track</div>
-        <h3>Draw the path</h3>
-        <p>Every storm goes where you send it. One finger, one line, one landfall.</p>
-      </div>
-      <div class="action-card">
-        <div class="lv">Intensify</div>
-        <h3>Manage the conditions</h3>
-        <p>Suppress shear, absorb heat, dive deeper — real atmospheric levers, real consequences.</p>
-      </div>
-      <div class="action-card">
-        <div class="lv">React</div>
-        <h3>Survive the Black Swans</h3>
-        <p>Unpredictable events reshape every season. Some help. Most don't.</p>
-      </div>
-      <div class="action-card">
-        <div class="lv">Score</div>
-        <h3>Hit your targets</h3>
-        <p>Cities across five ocean basins, each with their own value on the line.</p>
-      </div>
-    </div>
-  </div>
+    <div class="games">
+      <a class="game landfall" href="landfall.html">
+        <div class="art" role="img" aria-label="Satellite image of a hurricane's eye, courtesy of NASA Earth Observatory"></div>
+        <div class="veil"></div>
+        <div class="body">
+          <div class="badge"><span class="pulse"></span> Available now</div>
+          <h3>LANDFALL</h3>
+          <p>A hurricane simulator built on real meteorology. Draw the track, manage the intensity across five ocean basins, and see how much damage a single storm can do.</p>
+          <div class="btns">
+            <span class="btn primary">Explore LANDFALL</span>
+            <span class="btn ghost" onclick="event.preventDefault(); window.open('https://play.google.com/store/apps/details?id=feich13.landfall.aab','_blank','noopener')">Google Play ↗</span>
+          </div>
+        </div>
+      </a>
 
-  <div class="ticker-wrap">
-    <div class="ticker-track" id="tickerTrack"></div>
-  </div>
+      <a class="game squeeze" href="mainsqueeze.html">
+        <div class="art" role="img" aria-label="Main Squeeze gameplay: a lemonade stand in a sunny backyard"></div>
+        <div class="veil"></div>
+        <img class="mascot" src="assets/mainsqueeze/mascot.png" alt="" width="120" height="120">
+        <div class="body">
+          <div class="badge"><span class="pulse"></span> Coming soon</div>
+          <h3>Main Squeeze</h3>
+          <p>A lemonade stand tycoon game. Read the weather, perfect your recipe and grow from a cardboard box in the backyard to a global lemonade empire.</p>
+          <div class="btns">
+            <span class="btn primary">Explore Main Squeeze</span>
+            <span class="btn ghost" onclick="event.preventDefault(); location.href='mainsqueeze.html#updates'">Get notified</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head">
+      <h2>About the Studio</h2>
+      <span>Small team, big simulations</span>
+    </div>
+    <div class="about">
+      <div>
+        <p><strong>Feich13 Studios</strong> is a one-person studio based in the UK, building games in Unity in the evenings and at weekends.</p>
+        <p>Every game starts with a real system that's fun to push around, whether that's sea surface temperatures and wind shear or the economics of a lemonade stand on a rainy Tuesday, and turns it into something you can learn, master and share.</p>
+        <p>You buy the game once. There are no ads, no energy timers and no shops inside the game. That's the promise for everything we make.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="k">Based in</span><span class="v">United Kingdom</span></div>
+        <div class="fact"><span class="k">Platform</span><span class="v">Android</span></div>
+        <div class="fact"><span class="k">Engine</span><span class="v">Unity</span></div>
+        <div class="fact"><span class="k">Games</span><span class="v">2</span></div>
+        <div class="fact"><span class="k">Business model</span><span class="v">Pay once</span></div>
+        <div class="fact"><span class="k">Contact</span><span class="v"><a href="mailto:feich13studios@gmail.com" style="text-decoration:none">feich13studios@gmail.com</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section signup-wrap" id="updates">
+    <h2>Studio news, straight to your inbox</h2>
+    <p>New games, launches and big updates. A few emails a year, never spam.</p>
+    <form class="signup" id="notify"
+          action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
+          method="post" target="mc-hidden-iframe" onsubmit="handleMailchimpSubmit()">
+      <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
+      </div>
+      <button type="submit" id="notifyBtn">Subscribe</button>
+    </form>
+    <iframe name="mc-hidden-iframe" style="display:none;" title="mailchimp-submit"></iframe>
+    <div class="signup-note" id="notifyNote">Unsubscribe any time.</div>
+  </section>
 
   <footer>
     <div class="fbrand">FEICH13 STUDIOS © 2026<br><span style="font-size: 11px; opacity: 0.7;">Hurricane Ian eye photo courtesy of NASA Earth Observatory</span></div>
@@ -620,58 +295,38 @@
       <a href="https://x.com/feich13studios" target="_blank" rel="noopener">X</a>
       <a href="https://www.youtube.com/@feich13studios" target="_blank" rel="noopener">YouTube</a>
       <a href="https://www.facebook.com/feich13studios" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://play.google.com/store/apps/details?id=feich13.landfall.aab" target="_blank" rel="noopener">Google Play</a>
-      <a href="privacy.html">Privacy Policy</a>
+      <a href="privacy.html">Privacy</a>
     </div>
   </footer>
 
 <script>
-  const lines = [
-    "Hurricane Hunter makes TikTok in eyewall",
-    "NHC briefing interrupted after reporter asks if the storm has a Spotify playlist",
-    "Storm chasers descend despite NHC explicitly asking them not to",
-    "King of Spain fails citizenship test",
-    "Scottish man runs 240 miles in 6 hours, celebrates with black pudding",
-    "Local hardware store sells out of plywood, enterprising teens sell cardboard at markup",
-    "Dev log: five ocean basins, 630+ cities, still adding more",
-  ];
-  const track = document.getElementById('tickerTrack');
-  const content = lines.join('<span class="sep">•</span>');
-  track.innerHTML = content + '<span class="sep">•</span>' + content;
-
   function handleMailchimpSubmit() {
-    const form = document.getElementById('notify');
     const btn = document.getElementById('notifyBtn');
     const note = document.getElementById('notifyNote');
-
     btn.textContent = 'Sending...';
     btn.disabled = true;
-
     setTimeout(() => {
       document.getElementById('notify').style.display = 'none';
-      note.textContent = "You're on the list — we'll email you the day it launches.";
+      note.textContent = "You're on the list. Thanks for following the studio!";
       note.style.color = '#2dd4c0';
     }, 900);
-
     return true;
   }
 
+  // Consent-gated tracking: same localStorage key on every page, so one choice covers the whole site.
   const GA_MEASUREMENT_ID = 'G-YW4GQY24EQ';
   const CONSENT_KEY = 'landfall_cookie_consent';
-
   function loadGoogleAnalytics() {
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
     document.head.appendChild(script);
-
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', GA_MEASUREMENT_ID);
   }
-
   function loadMailchimpTracking() {
     (function(c,h,i,m,p){
       m=c.createElement(h), p=c.getElementsByTagName(h)[0];
@@ -679,31 +334,17 @@
       p.parentNode.insertBefore(m,p);
     })(document,"script","https://chimpstatic.com/mcjs-connected/js/users/321c56d5183788fe9b9946ff5/0672e0c9b27ea75571ab60e39.js");
   }
-
-  function loadAllTracking() {
-    loadGoogleAnalytics();
-    loadMailchimpTracking();
-  }
-
+  function loadAllTracking() { loadGoogleAnalytics(); loadMailchimpTracking(); }
   function handleConsent(accepted) {
     localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
     document.getElementById('consentBanner').style.display = 'none';
     if (accepted) loadAllTracking();
   }
-
   (function initConsent() {
     const stored = localStorage.getItem(CONSENT_KEY);
-    if (stored === 'accepted') {
-      loadAllTracking();
-    } else if (stored === 'declined') {
-      // Previously declined — respect that, don't load anything, don't nag again
-    } else {
-      document.getElementById('consentBanner').style.display = 'flex';
-    }
+    if (stored === 'accepted') loadAllTracking();
+    else if (stored !== 'declined') document.getElementById('consentBanner').style.display = 'flex';
   })();
 </script>
-
-<img src="https://tracker.metricool.com/c3po.jpg?hash=612402a5cc562f1e63303d74453e1abc" style="display:none;" alt=""/>
-
 </body>
 </html>
