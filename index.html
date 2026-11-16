@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feich13 Studios — Indie Games for Android | LANDFALL &amp; Main Squeeze</title>
+<title>Feich13 Studios — Indie Games for Android | LANDFALL, Main Squeeze &amp; Yes Boss</title>
 
-<meta name="description" content="Feich13 Studios is a UK indie studio making simulation games for Android. Play LANDFALL, the hurricane simulator, and look out for Main Squeeze, the lemonade stand tycoon game. No ads, no micro-transactions.">
+<meta name="description" content="Feich13 Studios is a UK indie studio making simulation games for Android. Play LANDFALL, the hurricane simulator, and look out for Main Squeeze, the lemonade stand tycoon, and Yes Boss, the kebab shop tycoon. No ads, no micro-transactions.">
 <link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/">
 <meta property="og:title" content="Feich13 Studios — Indie Games for Android">
-<meta property="og:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze is coming soon.">
+<meta property="og:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze and Yes Boss are coming soon.">
 <meta property="og:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
 <meta property="og:site_name" content="Feich13 Studios">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Feich13 Studios — Indie Games for Android">
-<meta name="twitter:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze is coming soon.">
+<meta name="twitter:description" content="Simulation games with no ads and no micro-transactions. LANDFALL is out now; Main Squeeze and Yes Boss are coming soon.">
 <meta name="twitter:image" content="https://feich13-studios.github.io/Landfall-Site/assets/mainsqueeze/og.jpg">
 
 <script type="application/ld+json">
@@ -37,7 +37,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&family=Baloo+2:wght@700;800&family=Bungee&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy-deep: #050b14;
@@ -97,7 +97,8 @@
   .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 30px; }
   .section-head h2 { font-family: 'Russo One', sans-serif; font-size: 28px; color: #f2fbfa; letter-spacing: 0.02em; }
   .section-head span { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
-  .games { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 1180px) { .games { grid-template-columns: 1fr 1fr; } }
   .game { position: relative; border-radius: 14px; overflow: hidden; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border); text-decoration: none; isolation: isolate; transition: transform .25s, box-shadow .25s; }
   .game:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
   .game .art { position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center; transition: transform .6s; }
@@ -131,6 +132,16 @@
   .game.squeeze .ghost { border: 1px solid rgba(255,217,59,0.5); color: #fff6dc; background: rgba(43,28,17,0.5); }
   .game.squeeze .mascot { position: absolute; top: 22px; right: 22px; width: 120px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.4)); animation: bob 3s ease-in-out infinite; }
   @keyframes bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-10px) rotate(4deg); } }
+
+
+  .game.yesboss { border-color: rgba(192,76,255,0.4); }
+  .game.yesboss .art { background-image: url('assets/yesboss/scene_highstreet.jpg'); }
+  .game.yesboss .veil { background: linear-gradient(180deg, rgba(13,8,25,0.05) 0%, rgba(13,8,25,0.6) 50%, rgba(13,8,25,0.97) 100%); }
+  .game.yesboss .badge { color: #ff8a1f; border: 1px solid rgba(255,138,31,0.45); background: rgba(255,138,31,0.12); }
+  .game.yesboss h3 { font-family: 'Bungee', 'Russo One', sans-serif; font-weight: 400; color: #fff; text-shadow: 0 0 14px #c04cff, 0 0 34px rgba(192,76,255,0.6); }
+  .game.yesboss p { color: #d6cdee; }
+  .game.yesboss .primary { background: #c04cff; color: #fff; }
+  .game.yesboss .ghost { border: 1px solid rgba(192,76,255,0.5); color: #f3eefc; background: rgba(13,8,25,0.5); }
 
   /* ---- about */
   .about { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
@@ -246,6 +257,20 @@
           </div>
         </div>
       </a>
+      <a class="game yesboss" href="yesboss.html">
+        <div class="art" role="img" aria-label="Yes Boss gameplay: a neon-lit kebab shop at night with a queue at the counter"></div>
+        <div class="veil"></div>
+        <div class="body">
+          <div class="badge"><span class="pulse"></span> Coming soon</div>
+          <h3>Yes Boss</h3>
+          <p>A kebab shop tycoon game. Survive the 3am queue and grow from a van in a pub car park to a neon chain across five UK cities.</p>
+          <div class="btns">
+            <span class="btn primary">Explore Yes Boss</span>
+            <span class="btn ghost" onclick="event.preventDefault(); location.href='yesboss.html#updates'">Get notified</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -264,7 +289,7 @@
         <div class="fact"><span class="k">Based in</span><span class="v">United Kingdom</span></div>
         <div class="fact"><span class="k">Platform</span><span class="v">Android</span></div>
         <div class="fact"><span class="k">Engine</span><span class="v">Unity</span></div>
-        <div class="fact"><span class="k">Games</span><span class="v">2</span></div>
+        <div class="fact"><span class="k">Games</span><span class="v">3</span></div>
         <div class="fact"><span class="k">Business model</span><span class="v">Pay once</span></div>
         <div class="fact"><span class="k">Contact</span><span class="v"><a href="mailto:feich13studios@gmail.com" style="text-decoration:none">feich13studios@gmail.com</a></span></div>
       </div>

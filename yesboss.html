@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yes Boss — Kebab Shop Tycoon Game for Android | Feich13 Studios</title>
+
+<meta name="description" content="Yes Boss is a kebab shop tycoon game for Android. Plan the morning, survive the 3am queue and grow from a van in a pub car park to a neon chain across Leeds, Blackpool, Newcastle and London. Pay once: no ads, no in-app purchases, plays offline.">
+<link rel="canonical" href="https://feich13-studios.github.io/Landfall-Site/yesboss.html">
+<link rel="icon" type="image/png" href="assets/yesboss/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://feich13-studios.github.io/Landfall-Site/yesboss.html">
+<meta property="og:title" content="Yes Boss — Kebab Shop Tycoon for Android">
+<meta property="og:description" content="From a van in a pub car park to a neon kebab chain across the UK. Coming soon to Google Play.">
+<meta property="og:image" content="https://feich13-studios.github.io/Landfall-Site/assets/yesboss/og.jpg">
+<meta property="og:site_name" content="Feich13 Studios">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yes Boss — Kebab Shop Tycoon for Android">
+<meta name="twitter:description" content="From a van in a pub car park to a neon kebab chain across the UK. Coming soon to Google Play.">
+<meta name="twitter:image" content="https://feich13-studios.github.io/Landfall-Site/assets/yesboss/og.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Yes Boss",
+  "alternateName": "Yes Boss: Kebab Shop Tycoon",
+  "genre": ["Simulation", "Tycoon", "Business"],
+  "gamePlatform": "Android",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "inLanguage": ["en", "fr", "es", "de", "pt", "it"],
+  "description": "A kebab shop tycoon game. Plan each morning, survive the late-night rush and grow from a van in a pub car park to a chain across five UK cities.",
+  "url": "https://feich13-studios.github.io/Landfall-Site/yesboss.html",
+  "author": { "@type": "Organization", "name": "Feich13 Studios" },
+  "playMode": "SinglePlayer",
+  "contentRating": "PEGI 12",
+  "image": "https://feich13-studios.github.io/Landfall-Site/assets/yesboss/og.jpg",
+  "publisher": { "@type": "Organization", "name": "Feich13 Studios" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@600;700&family=Bungee&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0819; --panel: #170f2b; --panel-2: #1e1438; --ink: #f3eefc; --soft: #b9afd6; --dim: #7d73a0;
+    --a: #c04cff; --b: #ff8a1f; --cream: #ffe0b4; --navy: #08121e; --teal: #2dd4c0; --line: rgba(192,76,255,0.22);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: 'Bungee', sans-serif; font-weight: 400; line-height: 1.05; }
+
+  /* ---- studio bar (shared brand) */
+  .topbar { background: var(--navy); display: flex; align-items: center; justify-content: space-between; padding: 18px 5vw; border-bottom: 1px solid rgba(45,212,192,0.18); }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Russo One', sans-serif; font-size: 14px; letter-spacing: 0.14em; color: #5a7480; text-decoration: none; }
+  .brand:hover { color: var(--b); }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--b); box-shadow: 0 0 8px var(--b); }
+  .topbar nav a { text-decoration: none; color: #8aa3ad; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; margin-left: 26px; text-transform: uppercase; }
+  .topbar nav a:hover { color: var(--b); }
+
+  /* ---- studio mark, kebab edition: doner fills FEICH, 13 arrives on a skewer, sauce drizzles across (same art as the game's splash) */
+  .splash { background: radial-gradient(ellipse at 50% 120%, #2a1530 0%, #0e0916 62%); padding: 44px 5vw 40px; text-align: center; }
+  .smark { display: inline-flex; align-items: flex-start; width: min(600px, 88vw); }
+  .smark .feich { position: relative; flex: 965; aspect-ratio: 965 / 269; }
+  .smark .feich > div { position: absolute; inset: 0; }
+  .smark .empty { background: url('assets/yesboss/feich_empty.png') center/contain no-repeat; }
+  .smark .meat {
+    -webkit-mask: url('assets/yesboss/feich_mask.png') center/contain no-repeat;
+            mask: url('assets/yesboss/feich_mask.png') center/contain no-repeat;
+    background: url('assets/yesboss/doner_fill.png') 0 0 / 146% auto no-repeat;
+    background-position: 0 -90%;
+    animation: stack 1.6s .3s cubic-bezier(.45,.05,.3,1) forwards;
+  }
+  @keyframes stack { from { background-position: 0 -90%; } to { background-position: 0 14%; } }
+  .smark .edge { background: url('assets/yesboss/feich_edge.png') center/contain no-repeat; opacity: 0; animation: fade .3s 1.9s forwards; }
+  .smark .sauce { background: url('assets/yesboss/sauce.png') left center/cover no-repeat; clip-path: inset(0 100% 0 0); animation: drizzle .6s 2.1s ease-out forwards; }
+  @keyframes drizzle { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .smark .thirteen { flex: 562; aspect-ratio: 562 / 269; margin-left: -2%; background: url('assets/yesboss/thirteen_skewer.png') top center/contain no-repeat;
+    opacity: 0; transform: translateX(60%); animation: skewer .5s 1.3s cubic-bezier(.3,1.5,.5,1) forwards; }
+  @keyframes skewer { to { opacity: 1; transform: none; } }
+  .splash .studios { margin-top: 8px; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.9em; padding-left: 0.9em; color: var(--cream); opacity: 0; animation: fade .6s 2.6s forwards; }
+  .splash .presents { margin-top: 6px; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.3em; color: #7d6a8a; text-transform: uppercase; opacity: 0; animation: fade .6s 2.9s forwards; }
+  @keyframes fade { to { opacity: 1; } }
+
+  /* ---- hero */
+  .hero { position: relative; background: linear-gradient(180deg, #120a24 0%, #1b0f33 60%, var(--bg) 100%); overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 40%, rgba(192,76,255,0.18), transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(255,138,31,0.10), transparent 50%); }
+  .hero-inner { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 6vh 5vw 9vh; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 44px; align-items: center; }
+  .hero .logo { width: min(520px, 100%); }
+  .soon { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,138,31,0.12); border: 1px solid rgba(255,138,31,0.4); color: var(--b); font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: 13px; padding: 7px 14px; border-radius: 4px; margin-bottom: 14px; }
+  .soon .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--b); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+  .hero p.tag { font-size: 19px; line-height: 1.6; margin: 18px 0 24px; max-width: 46ch; color: var(--soft); }
+  .hero p.tag strong { color: var(--ink); }
+  .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+  .chip { background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 500; font-size: 14px; }
+  .chip b { color: var(--b); }
+  .cta { display: inline-block; background: var(--a); color: #fff; border-radius: 12px; padding: 14px 26px; font-family: 'Bungee', sans-serif; font-size: 18px; text-decoration: none; box-shadow: 0 0 22px rgba(192,76,255,.45); transition: transform .15s; }
+  .cta:hover { transform: translateY(-2px); }
+  .play-btn { display: inline-flex; align-items: center; gap: 12px; background: #000; color: #fff; border: 1px solid #555; border-radius: 10px; padding: 9px 18px 9px 14px; text-decoration: none; }
+  .play-btn svg { width: 30px; height: 30px; }
+  .play-btn span { display: flex; flex-direction: column; line-height: 1.1; }
+  .play-btn small { font-size: 10px; letter-spacing: .08em; }
+  .play-btn b { font-size: 20px; font-weight: 500; }
+  .shot-frame { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 0 40px rgba(192,76,255,0.25), 0 24px 60px rgba(0,0,0,0.5); }
+  .shot-frame img { display: block; width: 100%; height: auto; }
+
+  /* ---- sections */
+  .section { max-width: 1240px; margin: 0 auto; padding: 7vh 5vw; }
+  .section-head { text-align: center; margin-bottom: 36px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 44px); }
+  .section-head p { margin-top: 12px; font-size: 18px; color: var(--soft); }
+  .stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .stage { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; position: relative; }
+  .stage .num { position: absolute; top: 10px; left: 10px; background: var(--a); color: #fff; font-family: 'Bungee', sans-serif; border-radius: 8px; padding: 2px 10px; font-size: 15px; z-index: 1; }
+  .stage img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .stage .txt { padding: 16px 18px 20px; }
+  .stage h3 { font-size: 20px; margin-bottom: 8px; color: var(--b); }
+  .stage p { font-size: 15px; line-height: 1.55; color: var(--soft); }
+  .stage .tiers { margin-top: 10px; font-size: 12.5px; color: var(--dim); line-height: 1.5; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feature { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .feature .ic { width: 48px; height: 48px; margin-bottom: 10px; }
+  .feature h3 { font-size: 18px; margin-bottom: 8px; }
+  .feature p { font-size: 15.5px; line-height: 1.55; color: var(--soft); }
+  .cities { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .city { background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .city h3 { font-size: 17px; }
+  .city .k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--b); margin: 4px 0 8px; font-weight: 700; }
+  .city p { font-size: 14px; line-height: 1.5; color: var(--soft); }
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gallery figure { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #000; }
+  .gallery img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+  .gallery figcaption { background: var(--panel); color: var(--soft); font-size: 14.5px; padding: 9px 14px; }
+  .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(8,5,18,.94); display: none; align-items: center; justify-content: center; padding: 3vw; cursor: zoom-out; }
+  .lightbox.on { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; border-radius: 14px; border: 1px solid var(--line); }
+  .promise { background: linear-gradient(135deg, #22123d, #160d2a); border: 1px solid var(--line); border-radius: 22px; padding: 40px 5vw; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
+  .promise h2 { color: var(--b); font-size: clamp(26px, 3.5vw, 38px); margin-bottom: 12px; }
+  .promise p { font-size: 17px; line-height: 1.6; max-width: 62ch; color: var(--soft); }
+  .promise p.access { margin-top: 10px; font-size: 15px; }
+  .langs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .langs span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 14px; }
+  .rating { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--dim); }
+  .signup-wrap { text-align: center; }
+  .signup { display: flex; max-width: 480px; margin: 22px auto 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); position: relative; }
+  .signup input { flex: 1; background: transparent; border: none; padding: 16px 18px; font-family: 'Inter', sans-serif; font-size: 16px; outline: none; color: var(--ink); }
+  .signup input::placeholder { color: var(--dim); }
+  .signup button { background: var(--b); border: none; padding: 0 24px; font-family: 'Bungee', sans-serif; font-size: 15px; color: #2a1405; cursor: pointer; }
+  .signup-note { margin-top: 12px; color: var(--dim); font-size: 14px; }
+
+  footer { background: var(--navy); border-top: 1px solid rgba(45,212,192,0.18); padding: 30px 5vw; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 7vh; }
+  footer .fbrand { font-family: 'Russo One', sans-serif; font-size: 12px; letter-spacing: 0.14em; color: #5a7480; }
+  footer .fsocial a { text-decoration: none; color: #8aa3ad; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 15px; margin-left: 20px; }
+  footer .fsocial a:hover { color: var(--b); }
+
+  .consent-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 999; background: #0a1420; border-top: 1px solid rgba(45,212,192,0.18); padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; box-shadow: 0 -12px 40px rgba(0,0,0,0.5); }
+  .consent-banner p { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: #a9c2ca; max-width: 62ch; margin: 0; }
+  .consent-banner a { color: var(--teal); text-decoration: underline; }
+  .consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .consent-actions button { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 11px 20px; border-radius: 4px; cursor: pointer; border: 1px solid rgba(45,212,192,0.18); }
+  .consent-accept { background: var(--teal); color: #04211d; border: none !important; }
+  .consent-decline { background: transparent; color: #5a7480; }
+
+  body:not(.live) .when-live, body.live .when-soon { display: none !important; }
+
+  @media (max-width: 1080px) { .cities { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 980px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .stages, .features { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .stages, .features, .gallery, .cities { grid-template-columns: 1fr; }
+    .promise { grid-template-columns: 1fr; }
+    .promise img { width: 120px; }
+    .topbar nav a { margin-left: 14px; }
+    footer .fsocial a { margin: 0 14px 0 0; }
+    .consent-banner { flex-direction: column; align-items: stretch; text-align: center; }
+    .consent-actions { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="consent-banner" id="consentBanner" style="display: none;">
+    <p>This site uses Google Analytics and Mailchimp tracking to understand visitor traffic and support our email signup. No personal data is collected — see our <a href="privacy-yesboss.html">Privacy Policy</a> for details.</p>
+    <div class="consent-actions">
+      <button class="consent-decline" onclick="handleConsent(false)">Decline</button>
+      <button class="consent-accept" onclick="handleConsent(true)">Accept</button>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <a class="brand" href="index.html"><span class="dot"></span> FEICH13 STUDIOS</a>
+    <nav>
+      <a href="index.html">Studio</a>
+      <a href="#features">Gameplay</a>
+      <a href="#screens">Screenshots</a>
+      <a class="when-soon" href="#updates">Get Notified</a>
+      <a class="when-live play-link" href="#">Google Play</a>
+    </nav>
+  </div>
+
+  <div class="splash" aria-label="Feich13 Studios presents">
+    <div class="smark">
+      <div class="feich"><div class="empty"></div><div class="meat"></div><div class="edge"></div><div class="sauce"></div></div>
+      <div class="thirteen"></div>
+    </div>
+    <div class="studios">STUDIOS</div>
+    <div class="presents">presents</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="soon when-soon"><span class="pulse"></span> Coming soon to Google Play</div>
+        <div class="soon when-live"><span class="pulse"></span> Out now on Google Play</div>
+        <h1><img class="logo" src="assets/yesboss/logo.png" alt="Yes Boss — The Kebab Shop Tycoon" width="1000" height="420"></h1>
+        <p class="tag">A <strong>kebab shop tycoon game</strong> for Android. Plan the morning, survive the 3am queue and grow from a van in a pub car park to a neon chain across the UK.</p>
+        <div class="badges">
+          <span class="chip"><b>✓</b> No ads</span>
+          <span class="chip"><b>✓</b> No in-app purchases</span>
+          <span class="chip"><b>✓</b> Plays offline</span>
+          <span class="chip"><b>✓</b> 6 languages</span>
+        </div>
+        <a class="cta when-soon" href="#updates">Tell me when it launches</a>
+        <a class="play-btn play-link when-live" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34a853" d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z"/><path fill="#fbbc04" d="m17.3 8.5-3.5 3.5 3.5 3.5 4-2.3c.9-.5.9-1.9 0-2.4z"/><path fill="#4285f4" d="M3.6 1.8c.3-.2.8-.2 1.2 0l12.5 6.7-3.5 3.5z"/><path fill="#ea4335" d="m13.8 12 3.5 3.5-12.5 6.7c-.4.2-.9.2-1.2 0z"/></svg><span><small>GET IT ON</small><b>Google Play</b></span></a>
+      </div>
+      <div>
+        <div class="shot-frame"><img src="assets/yesboss/scene_highstreet.jpg" alt="Yes Boss gameplay: a queue at the counter of a neon-lit kebab shop at night" width="1600" height="740"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="career">
+    <div class="section-head">
+      <h2>From the van to the chain</h2>
+      <p>Three shops, twelve fit-outs, five cities and one very long night.</p>
+    </div>
+    <div class="stages">
+      <div class="stage"><span class="num">1</span><img src="assets/yesboss/stage_van.jpg" alt="The kebab van in a pub car park" loading="lazy">
+        <div class="txt"><h3>The Van</h3><p>One spit and a gas grill in a pub car park. Learn the rhythm of a night: lunch, tea, the evening and the late rush.</p>
+        <div class="tiers">Gas Grill → Proper Grill → Rotisserie → Fitted-out Van</div></div></div>
+      <div class="stage"><span class="num">2</span><img src="assets/yesboss/stage_backstreet.jpg" alt="A backstreet takeaway" loading="lazy">
+        <div class="txt"><h3>The Backstreet</h3><p>Your own takeaway. Get a late licence, hire a proper team and meet your first rival.</p>
+        <div class="tiers">Bare Unit → Tiled → Neon Sign &amp; Fridge → Twin Spits</div></div></div>
+      <div class="stage"><span class="num">3</span><img src="assets/yesboss/stage_highstreet.jpg" alt="A high street kebab shop" loading="lazy">
+        <div class="txt"><h3>The High Street</h3><p>Seating, delivery apps and a queue round the corner when the clubs kick out.</p>
+        <div class="tiers">Counter Only → Seating → Big Sign &amp; Hatch → Charcoal Grill</div></div></div>
+      <div class="stage"><span class="num">4</span><img src="assets/yesboss/stage_chain.jpg" alt="A Yes Boss shop in Newcastle" loading="lazy">
+        <div class="txt"><h3>The Chain</h3><p>Promote your best staff to manage new shops, or run any of them yourself for the night.</p>
+        <div class="tiers">Leeds → Blackpool → Newcastle → London</div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="features" style="padding-top: 2vh;">
+    <div class="section-head">
+      <h2>How you'll play</h2>
+      <p>Plan each morning, trade through the night, learn from the books.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/kebab.png" alt="" width="48" height="48" loading="lazy"><h3>Size the spit</h3><p>The doner cooks all day and whatever's left gets binned. Read the forecast, the weather and the day of the week, and get it right.</p></div>
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/box.png" alt="" width="48" height="48" loading="lazy"><h3>More than kebabs</h3><p>Wraps, burgers, salads, munchy boxes, sides and cans. One customer buys a can, the next buys eight kebabs for their mates.</p></div>
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/crown.png" alt="" width="48" height="48" loading="lazy"><h3>Staff with personalities</h3><p>Fast Hands, Chatty, Spotless, Hothead, Sticky Fingers. Keep morale up and they'll shout "Yes boss!" Let it slip and they ring in sick.</p></div>
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/police.png" alt="" width="48" height="48" loading="lazy"><h3>Night life</h3><p>Chucking-out time, hen dos, drunk singers, the odd scrap in the queue, blue lights, taxis at the rank and chips on the pavement.</p></div>
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/money.png" alt="" width="48" height="48" loading="lazy"><h3>Run a real business</h3><p>Prices, stock, suppliers, rotas, hygiene inspections, late licences, delivery apps and reputation. Three days in the red and you're bust.</p></div>
+      <div class="feature"><img class="ic" src="assets/yesboss/icons/love.png" alt="" width="48" height="48" loading="lazy"><h3>Made to come back to</h3><p>A challenge every shift, 24 achievements, lifetime stats, a full UK year of events and a hardcore mode that wipes the save.</p></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2vh;">
+    <div class="section-head">
+      <h2>Five cities, five rivals</h2>
+      <p>Every city has its own rhythm, and a rival who wants your customers.</p>
+    </div>
+    <div class="cities">
+      <div class="city"><h3>Stoke</h3><div class="k">Grill Sergeant</div><p>Where it starts. Steady all year, lively on football nights.</p></div>
+      <div class="city"><h3>Leeds</h3><div class="k">Freshly Shaved</div><p>Students: huge in term, dead in summer. Freshers' week is gold.</p></div>
+      <div class="city"><h3>Blackpool</h3><div class="k">Golden Spit</div><p>Summer and the illuminations boom. Winter is bleak. Hen dos galore.</p></div>
+      <div class="city"><h3>Newcastle</h3><div class="k">Dirty Dave's</div><p>The biggest late rush in the game. And the most trouble.</p></div>
+      <div class="city"><h3>London</h3><div class="k">Spitfire</div><p>Huge footfall and big spends, with eye-watering rent.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="screens" style="padding-top: 2vh;">
+    <div class="section-head">
+      <h2>Screenshots</h2>
+      <p>Work-in-progress renders from the current build.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="assets/yesboss/screen1.jpg" alt="Start in a van in a pub car park" loading="lazy" width="1280" height="720"><figcaption>Start in a van in a pub car park</figcaption></figure>
+      <figure><img src="assets/yesboss/screen2.jpg" alt="Feed the 3am queue" loading="lazy" width="1280" height="720"><figcaption>Feed the 3am queue</figcaption></figure>
+      <figure><img src="assets/yesboss/screen3.jpg" alt="Move up to the backstreet" loading="lazy" width="1280" height="720"><figcaption>Move up to the backstreet</figcaption></figure>
+      <figure><img src="assets/yesboss/screen4.jpg" alt="Run the high street kitchen" loading="lazy" width="1280" height="720"><figcaption>Run the high street kitchen</figcaption></figure>
+      <figure><img src="assets/yesboss/screen5.jpg" alt="Pick your neon palette" loading="lazy" width="1280" height="720"><figcaption>Pick your neon</figcaption></figure>
+      <figure><img src="assets/yesboss/screen6.jpg" alt="Open a shop in Newcastle" loading="lazy" width="1280" height="720"><figcaption>Build a chain across the UK</figcaption></figure>
+      <figure><img src="assets/yesboss/screen7.jpg" alt="London at dusk" loading="lazy" width="1280" height="720"><figcaption>See off your rivals</figcaption></figure>
+      <figure><img src="assets/yesboss/screen8.jpg" alt="Blackpool shop next to the rock and gift shop" loading="lazy" width="1280" height="720"><figcaption>Blackpool, by the seaside</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot"><img alt=""></div>
+
+  <section class="section">
+    <div class="promise">
+      <div>
+        <h2>Buy it once. That's it.</h2>
+        <p>No ads, no energy timers, no shops inside the game. Yes Boss is a single purchase, playable offline, and translated into six languages.</p>
+        <p class="access">Accessibility options: larger text, colour-blind safe colours, reduced motion, reduced flashing and fewer speech bubbles.</p>
+        <div class="langs"><span>English</span><span>Français</span><span>Español</span><span>Deutsch</span><span>Português</span><span>Italiano</span></div>
+        <span class="rating">Rated 12+ for mild violence and alcohol references.</span>
+      </div>
+      <img src="assets/yesboss/app-icon.png" alt="Yes Boss app icon" width="170" height="170" style="border-radius: 34px; border: 2px solid var(--line);">
+    </div>
+  </section>
+
+  <section class="section signup-wrap" id="updates">
+    <div class="section-head" style="margin-bottom: 0;">
+      <h2 class="when-soon">Join the queue</h2><h2 class="when-live">Stay in the loop</h2>
+      <p class="when-soon">Get one email when Yes Boss lands on Google Play, plus the occasional studio update.</p><p class="when-live">Updates, new cities and news from the studio. Occasional emails only.</p>
+    </div>
+    <form class="signup" id="notify"
+          action="https://github.us9.list-manage.com/subscribe/post?u=321c56d5183788fe9b9946ff5&id=3155be67f6"
+          method="post" target="mc-hidden-iframe" onsubmit="handleMailchimpSubmit()">
+      <input type="email" name="EMAIL" id="notifyEmail" placeholder="you@email.com" required>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_321c56d5183788fe9b9946ff5_3155be67f6" tabindex="-1" value="">
+      </div>
+      <button type="submit" id="notifyBtn">Notify me</button>
+    </form>
+    <iframe name="mc-hidden-iframe" style="display:none;" title="mailchimp-submit"></iframe>
+    <div class="signup-note" id="notifyNote">No spam. Unsubscribe any time.</div>
+  </section>
+
+  <footer>
+    <div class="fbrand">FEICH13 STUDIOS © 2026</div>
+    <div class="fsocial">
+      <a href="index.html">Studio</a>
+      <a href="landfall.html">LANDFALL</a>
+      <a href="mainsqueeze.html">Main Squeeze</a>
+      <a href="https://www.tiktok.com/@feich13studios" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/feich13studios" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/feich13studios" target="_blank" rel="noopener">X</a>
+      <a href="https://www.youtube.com/@feich13studios" target="_blank" rel="noopener">YouTube</a>
+      <a href="privacy-yesboss.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+<script>
+  // ---- Launch switch: when the game is live on Google Play, set PLAY_LIVE to true.
+  const PLAY_LIVE = false;
+  const PLAY_URL = 'https://play.google.com/store/apps/details?id=feich13.yesboss';
+  if (PLAY_LIVE) {
+    document.body.classList.add('live');
+    document.querySelectorAll('.play-link').forEach(a => { a.href = PLAY_URL; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  // ---- Screenshot lightbox
+  const lb = document.getElementById('lightbox');
+  document.querySelectorAll('.gallery img').forEach(img => img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.querySelector('img').alt = img.alt; lb.classList.add('on'); }));
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  function handleMailchimpSubmit() {
+    const btn = document.getElementById('notifyBtn');
+    const note = document.getElementById('notifyNote');
+    btn.textContent = 'Wrapping it up...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('notify').style.display = 'none';
+      note.textContent = "You're in the queue, boss! We'll email you the day Yes Boss launches.";
+      note.style.color = '#ff9a3c';
+    }, 900);
+    return true;
+  }
+
+  const GA_MEASUREMENT_ID = 'G-YW4GQY24EQ';
+  const CONSENT_KEY = 'landfall_cookie_consent';
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+  }
+  function loadMailchimpTracking() {
+    (function(c,h,i,m,p){
+      m=c.createElement(h), p=c.getElementsByTagName(h)[0];
+      m.async=1; m.src=i;
+      p.parentNode.insertBefore(m,p);
+    })(document,"script","https://chimpstatic.com/mcjs-connected/js/users/321c56d5183788fe9b9946ff5/0672e0c9b27ea75571ab60e39.js");
+  }
+  function loadAllTracking() { loadGoogleAnalytics(); loadMailchimpTracking(); }
+  function handleConsent(accepted) {
+    localStorage.setItem(CONSENT_KEY, accepted ? 'accepted' : 'declined');
+    document.getElementById('consentBanner').style.display = 'none';
+    if (accepted) loadAllTracking();
+  }
+  (function initConsent() {
+    const stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === 'accepted') loadAllTracking();
+    else if (stored !== 'declined') document.getElementById('consentBanner').style.display = 'flex';
+  })();
+</script>
+</body>
+</html>
